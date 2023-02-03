@@ -24,9 +24,15 @@
     outline: none;
 }
 
-.login-btn {
+.login-btn,
+.register-btn {
     background-color: #05476A;
     border: none;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+    border: #05476A solid;
 }
 
 h1 {
@@ -36,3 +42,9 @@ h1 {
 // button:focus:not(:focus-visible) {
 //     outline: none;
 // }
+
+// MAIN
+
+main {
+    margin: 0px 100px;
+}
