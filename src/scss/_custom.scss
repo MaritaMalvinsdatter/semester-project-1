@@ -1,0 +1,38 @@
+// HEADER
+
+.navbar-custom {
+    background-color: #05476A;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text,
+.navbar-custom .nav-link,
+.fa-bars,
+.btn {
+    color: #FFF6CB;
+}
+
+.navbar-toggler {
+    border: #FFF6CB solid;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.btn {
+    border: #FFF6CB solid;
+    outline: none;
+}
+
+.login-btn {
+    background-color: #05476A;
+    border: none;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+// button:focus:not(:focus-visible) {
+//     outline: none;
+// }

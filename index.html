@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to your account - Auction House">
+    <link rel="stylesheet" href="/dist/css/styles.css">
+    <script src="https://kit.fontawesome.com/368a06d7e0.js" crossorigin="anonymous"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/src/js/modal.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-custom bg-gradient py-sm-3 pt-lg-5 pb-lg-1">
+            <div class="container-fluid">
+                <a class="navbar-brand logo h1" href="#">Auction House</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class="fa-solid fa-bars" style="font-size:28px;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">New Listing</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li> -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
+                                        id="myInput">Log In</a></li>
+                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" href="#">My Listings</a></li>
+                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-center">Login:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm" method="get" action="/index.html">
+                            <div class="form-outline mb-4">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="email">Email:</label>
+                                    <input type="email" name="email" pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                                        title="only an email registered within the Noroff domain can register"
+                                        class="form-control" placeholder="email address" required />
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="password">Password:</label>
+                                <input type="password" name="password" minlength="8" class="form-control"
+                                    placeholder="minimum 8 characters" required />
+                            </div>
+                            <div class="text-center pt-1 mb-2 pb-1 d-flex flex-column">
+                                <button class="btn login-btn" type="submit">Login</button>
+                                <div id="error-alert" class="alert text-center"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 me-2">Don't have an account?</p>
+                            <a href="/register.html">Create New Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center mt-5">Listings</h1>
+    </main>
+
+</body>
+
+
+</html>
