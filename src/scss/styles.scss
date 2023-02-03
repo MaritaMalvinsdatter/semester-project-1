@@ -1,1 +1,10 @@
+// Bootstrap Variable Overrides 
+@import "_variables.scss";
+
+// Bootstrap Styles
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Custom Styles
+@import "_custom.scss"
+
+
