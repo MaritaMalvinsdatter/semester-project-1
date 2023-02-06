@@ -25,14 +25,17 @@
 }
 
 .login-btn,
-.register-btn {
+.register-btn,
+.edit-btn {
     background-color: #05476A;
     border: none;
 }
 
 .login-btn:hover,
-.register-btn:hover {
+.register-btn:hover,
+.edit-btn:hover {
     border: #05476A solid;
+    color: #05476A;
 }
 
 h1 {
@@ -46,5 +49,5 @@ h1 {
 // MAIN
 
 main {
-    margin: 0px 100px;
+    margin: 0px 20px;
 }
