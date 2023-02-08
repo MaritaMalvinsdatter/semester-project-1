@@ -5,7 +5,7 @@ export const API_LISTINGS_CONST = '/listings';
 export const API_AUCTION_URL = `${API_HOST_URL}${API_CONST}${API_AUCTION_CONST}`;
 export const API_LISTINGS_URL = `${API_AUCTION_URL}${API_LISTINGS_CONST}`;
 
-console.log(API_LISTINGS_URL)
+// console.log(API_LISTINGS_URL)
 
 
 // export const API_POST_AUTHOR = '_author=true&_reactions=true&_comments=true';
