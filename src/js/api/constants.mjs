@@ -2,12 +2,13 @@ export const API_HOST_URL = 'https://nf-api.onrender.com';
 export const API_CONST = '/api/v1';
 export const API_AUCTION_CONST = '/auction';
 export const API_LISTINGS_CONST = '/listings';
+export const API_SELLER = '_seller=true&_bids=true';
+export const DESC_ORDER = 'sort=created&sortOrder=desc';
 export const API_AUCTION_URL = `${API_HOST_URL}${API_CONST}${API_AUCTION_CONST}`;
 export const API_LISTINGS_URL = `${API_AUCTION_URL}${API_LISTINGS_CONST}`;
+export const API_SELLER_URL = `${API_LISTINGS_URL}/?${API_SELLER}`;
+export const API_DESC_URL = `${API_LISTINGS_URL}/?${DESC_ORDER}`
 
-// console.log(API_LISTINGS_URL)
+// console.log(API_SELLER_URL)
 
-
-// export const API_POST_AUTHOR = '_author=true&_reactions=true&_comments=true';
-// export const API_AUTHOR_URL = `${API_SOCIAL_URL}${API_POSTS_BASE}/?${API_POST_AUTHOR}`;
 
