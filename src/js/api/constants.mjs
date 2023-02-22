@@ -7,8 +7,8 @@ export const DESC_ORDER = 'sort=created&sortOrder=desc';
 export const API_AUCTION_URL = `${API_HOST_URL}${API_CONST}${API_AUCTION_CONST}`;
 export const API_LISTINGS_URL = `${API_AUCTION_URL}${API_LISTINGS_CONST}`;
 export const API_SELLER_URL = `${API_LISTINGS_URL}/?${API_SELLER}`;
-export const API_DESC_URL = `${API_LISTINGS_URL}/?${DESC_ORDER}`
+export const API_DESC_URL = `${API_LISTINGS_URL}/?${DESC_ORDER}&${API_SELLER}`
 
-// console.log(API_SELLER_URL)
+console.log(API_DESC_URL)
 
 
