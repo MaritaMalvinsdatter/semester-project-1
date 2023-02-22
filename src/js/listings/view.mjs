@@ -1,9 +1,10 @@
 
+// View Full List of Auction Items
 
 export function listTemplate(listData) {
     const list = document.createElement("div");
     list.classList.add("col", "container-fluid", "d-flex", "flex-column", "border", "border-primary", "m-3");
-    list.innerHTML = `<a href="list.html?id=${listData.id}" class="text-decoration-none"><h2 class="text-muted text-center">${listData.title}</h2></a>`;
+    list.innerHTML = `<a href="listingItem/index.html?id=${listData.id}" class="text-decoration-none"><h2 class="text-muted text-center">${listData.title}</h2></a>`;
 
     if (listData.media) {
         const img = document.createElement("img");
@@ -31,13 +32,15 @@ export function listTemplate(listData) {
     return list;
 }
 
+// Auction Item Specifics 
+
 export function listSpecificTemplate(listData) {
     const list = document.createElement("div");
     list.classList.add("mainlist", "container-fluid", "d-flex", "flex-column", "border", "border-primary");
-    list.innerHTML = `<h2>${listData.title}</h2>`;
-    const body = document.createElement("p");
-    body.innerHTML = `${listData.body}`;
-    list.append(body);
+    list.innerHTML = `<h2>${listData.title}</h2> <br> <p>${listData.description}</p> <br> <p>${listData.endsAt}</p> `;
+    // const body = document.createElement("p");
+    // body.innerHTML = `${listData.body}`;
+    // list.append(body);
     
     
     if (listData.media) {

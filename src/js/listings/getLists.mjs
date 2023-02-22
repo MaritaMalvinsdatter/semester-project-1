@@ -1,16 +1,18 @@
-import { API_AUCTION_URL } from "../api/constants.mjs";
-import { API_SELLER_URL } from "../api/constants.mjs";
+// import { API_AUCTION_URL } from "../api/constants.mjs";
+// import { API_SELLER_URL } from "../api/constants.mjs";
+import { API_LISTINGS_URL} from "../api/constants.mjs";
 import { API_DESC_URL } from "../api/constants.mjs";
+import { DESC_ORDER } from "../api/constants.mjs";
 import { API_SELLER } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import * as templates from "./view.mjs";
-const action = "/lists";
+// const action = "/lists";
 
 
 
 // gets list of aution items
 export async function getList() {
-    const updateListURL = `${API_SELLER_URL}`;
+    const updateListURL = `${API_DESC_URL}`;
     const response = await tokenFetch(updateListURL)
     const list = await response.json();
 
@@ -37,7 +39,7 @@ export async function getListingSpecifics() {
     if (!id) {
         console.error("listingID needed to get listing");
     }
-    const getSpecificsURL = `${API_SOCIAL_URL}${action}/${id}?${API_POST_AUTHOR}`;
+    const getSpecificsURL = `${API_LISTINGS_URL}/${id}?${DESC_ORDER}&${API_SELLER}`;
     const response = await tokenFetch(getSpecificsURL)
     const specifics = await response.json();
 
@@ -47,8 +49,8 @@ export async function getListingSpecifics() {
 }
 
 export async function getOneListing() {
-    const specifics = await getSpecifics()
-    const container = document.querySelector("#post");
-    templates.renderPost(specifics, container)
+    const specifics = await getListingSpecifics()
+    const container = document.querySelector("#listing-specific");
+    templates.renderSpecifics(specifics, container)
     console.log(specifics);
 }
