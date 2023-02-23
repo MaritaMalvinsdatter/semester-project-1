@@ -20,12 +20,12 @@
 //   dateInput.valueAsDate = new Date();
 // });
 
-const dateInput = document.querySelector("#listingModal #today");
+// const dateInput = document.querySelector("#listingModal #today");
 
-// Use setTimeout to delay the execution of the code by 100 milliseconds
-setTimeout(function() {
-  // Set the date input value to today's date
-  dateInput.valueAsDate = new Date();
-}, 100);
+// // Use setTimeout to delay the execution of the code by 100 milliseconds
+// setTimeout(function() {
+//   // Set the date input value to today's date
+//   dateInput.valueAsDate = new Date();
+// }, 100);
 
 
