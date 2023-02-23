@@ -2,6 +2,7 @@ import { setRegisterFormListener } from "./login_register/register.mjs";
 import { setLoginFormListener } from "./login_register/login.mjs";
 import { getListings } from "./listings/getLists.mjs";
 import { getOneListing } from "./listings/getLists.mjs";
+import { setNewListingListener } from "./listings/newListing.mjs";
 import * as paths from "./api/constants.mjs";
 import { logOutEvent } from "./login_register/logout.mjs";
 
@@ -16,9 +17,11 @@ if (path === "/login/login.html") {
 } else if (path === "/index.html") {
     getListings()
     logOutEvent()
+    setNewListingListener()
 } else if (path === '/listingItem/index.html') {
     getOneListing()
 } 
+
 
 
 

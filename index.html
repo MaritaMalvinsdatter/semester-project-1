@@ -42,7 +42,7 @@
                                 <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
                                         id="myInput">Log In</a></li> -->
                                 <li><a class="dropdown-item" href="/login/login.html">Log In</a></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" id="log-out" href="#">Log Out</a></li>
                                 <li><a class="dropdown-item" href="#">My Listings</a></li>
                                 <li><a class="dropdown-item" href="/profile/index.html">My Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="#">Edit Profile</a></li> -->
@@ -114,10 +114,10 @@
                                 </div>
                             </div>
                             <div class="form-group row mx-3">
-                                <label for="body" class="col-form-label">Description:</label>
+                                <label for="description" class="col-form-label">Description:</label>
                                 <div>
-                                    <textarea id="textarea" name="body" placeholder="describe your product" cols="20"
-                                        rows="2" class="form-control" type="text"></textarea>
+                                    <textarea id="textarea" name="description" placeholder="describe your product"
+                                        cols="20" rows="2" class="form-control" type="text"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row mx-3">
@@ -137,7 +137,7 @@
                             <div class="form-group row mx-3">
                                 <label class="col-form-label" for="date">Auction ends at: *</label>
                                 <div>
-                                    <input type="date" id="today" required="required" min="2023-02-21" max="2023-12-31"
+                                    <input type="date" id="endsAt" required="required" min="2023-02-21" max="2023-12-31"
                                         class="form-control" />
                                 </div>
                             </div>
