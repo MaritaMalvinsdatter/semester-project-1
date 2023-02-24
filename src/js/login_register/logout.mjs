@@ -1,9 +1,13 @@
 
-export function logOutEvent() {
+export function setLogoutListener() {
     
-    const logOutFeature = document.getElementById("log-out");
+    const logOutButton = document.getElementById("log-out");
 
-    logOutFeature.addEventListener("click", function() {
+    if(!logOutButton) {
+       return;
+    }
+
+    logOutButton.addEventListener("click", function() {
         localStorage.removeItem("profile");
         localStorage.removeItem("token");
         window.location.href = "/index.html";
