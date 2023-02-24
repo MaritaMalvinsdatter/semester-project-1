@@ -3,6 +3,7 @@ import { setLoginFormListener } from "./login_register/login.mjs";
 import { getListings } from "./listings/getLists.mjs";
 import { getOneListing } from "./listings/getLists.mjs";
 import { setNewListingListener } from "./listings/newListing.mjs";
+import { setProfilePage } from "./profile/profile.mjs";
 import * as paths from "./api/constants.mjs";
 import { setLogoutListener } from "./login_register/logout.mjs";
 
@@ -10,37 +11,40 @@ import { setLogoutListener } from "./login_register/logout.mjs";
 
 const path = location.pathname
 
-// if (path === "/login/login.html") {
-//     setLoginFormListener()
-// } else if (path === "/register/index.html") {
-//     setRegisterFormListener()
-// } else if (path === "/index.html") {
-//     getListings()
-//     logOutEvent()
-//     setNewListingListener()
-// } else if (path === '/listingItem/index.html') {
-//     getOneListing()
-// } 
-
-switch (path) {
-    case "/":
-    case "/index.html":
-        getListings();
-        setLogoutListener();
-        setNewListingListener();
-        break;
-    case "/login/":
-    case "/login/index.html":
-        setLoginFormListener();
-        break;
-    case "/register/":
-    case "/register/index.html":
-        setRegisterFormListener();
-        break; 
-    case "/listingItem/index.html":
-        getOneListing();
-        break;       
+if (path === "/login/login.html") {
+    setLoginFormListener()
+} else if (path === "/register/index.html") {
+    setRegisterFormListener()
+} else if (path === "/index.html") {
+    getListings()
+    setLogoutListener()
+    setNewListingListener()
+} else if (path === '/listingItem/index.html') {
+    getOneListing()
+} else if (path === '/profile/index.html') {
+    setProfilePage()
 }
+    
+
+// switch (path) {
+//     case "/":
+//     case "/index.html":
+//         getListings();
+//         setLogoutListener();
+//         setNewListingListener();
+//         break;
+//     case "/login/":
+//     case "/login/index.html":
+//         setLoginFormListener();
+//         break;
+//     case "/register/":
+//     case "/register/index.html":
+//         setRegisterFormListener();
+//         break; 
+//     case "/listingItem/index.html":
+//         getOneListing();
+//         break;       
+// }
 
 
 
