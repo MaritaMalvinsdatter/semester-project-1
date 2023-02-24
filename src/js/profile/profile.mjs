@@ -26,9 +26,12 @@ const editAvatarBtn = document.getElementById("edit-avatar-btn");
 const avatarInput = document.getElementById("avatar-input");
 const updateAvatarBtn = document.getElementById("update-avatar-btn");
 
-avatarElem.src = profile.avatar;
+
 
 export function updateAvatar() {
+
+  avatarElem.src = profile.avatar;
+  
     editAvatarBtn.addEventListener("click", () => {
         avatarInput.hidden = false;
         updateAvatarBtn.hidden = false;
