@@ -1,4 +1,4 @@
-import { load } from "../api/tokenStorage.mjs";
+import { load, save } from "../api/tokenStorage.mjs";
 
 
 // Fetch user info and displays on profile page
@@ -19,3 +19,33 @@ export function setProfilePage() {
 }
 
 // Updates avatar
+const profile = load("profile");
+
+const avatarElem = document.getElementById("profile-avatar");
+const editAvatarBtn = document.getElementById("edit-avatar-btn");
+const avatarInput = document.getElementById("avatar-input");
+const updateAvatarBtn = document.getElementById("update-avatar-btn");
+
+avatarElem.src = profile.avatar;
+
+export function updateAvatar() {
+    editAvatarBtn.addEventListener("click", () => {
+        avatarInput.hidden = false;
+        updateAvatarBtn.hidden = false;
+        editAvatarBtn.hidden = true;
+      });
+      
+      updateAvatarBtn.addEventListener("click", () => {
+        const newAvatar = avatarInput.value;
+        profile.avatar = newAvatar;
+        save("profile", profile);
+        avatarElem.src = newAvatar;
+        avatarInput.hidden = true;
+        updateAvatarBtn.hidden = true;
+        editAvatarBtn.hidden = false;
+      });
+}
+
+// editAvatarBtn.addEventListener("click", updateAvatar);
+
+

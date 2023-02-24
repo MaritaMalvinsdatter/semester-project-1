@@ -3,7 +3,7 @@ import { setLoginFormListener } from "./login_register/login.mjs";
 import { getListings } from "./listings/getLists.mjs";
 import { getOneListing } from "./listings/getLists.mjs";
 import { setNewListingListener } from "./listings/newListing.mjs";
-import { setProfilePage } from "./profile/profile.mjs";
+import { setProfilePage, updateAvatar } from "./profile/profile.mjs";
 import * as paths from "./api/constants.mjs";
 import { setLogoutListener } from "./login_register/logout.mjs";
 
@@ -23,6 +23,7 @@ if (path === "/login/login.html") {
     getOneListing()
 } else if (path === '/profile/index.html') {
     setProfilePage()
+    updateAvatar()
 }
     
 
