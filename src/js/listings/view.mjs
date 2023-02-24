@@ -6,12 +6,18 @@ export function listTemplate(listData) {
     list.classList.add("col", "container-fluid", "d-flex", "flex-column", "border", "border-primary", "m-3");
     list.innerHTML = `<a href="listingItem/index.html?id=${listData.id}" class="text-decoration-none"><h2 class="text-muted text-center">${listData.title}</h2></a>`;
 
-    if (listData.media) {
-        const img = document.createElement("img");
-        img.classList.add("img-fluid", "mb-3");
-        img.src = listData.media; 
-        img.alt = `Image from ${listData.title}`;
-        list.append(img)
+    if (listData.media && Array.isArray(listData.media)) {
+        const imgContainer = document.createElement("div");
+        imgContainer.classList.add("d-flex", "flex-wrap", "mb-3");
+        list.append(imgContainer);
+      
+        listData.media.forEach(url => {
+          const img = document.createElement("img");
+          img.classList.add("img-fluid", "mr-3", "mb-3");
+          img.src = url; 
+          img.alt = `Image from ${listData.title}`;
+          imgContainer.append(img);
+        });
       }
 
     const seller = document.createElement("p");
@@ -45,11 +51,25 @@ export function listSpecificTemplate(listData) {
     list.innerHTML = `<h2 class="text-center mt-5">${listData.title}</h2> <br> <p>${listData.description}</p>`;
     
     if (listData.media) {
-        const img = document.createElement("img");
-        img.classList.add("img-fluid");
-        img.src = listData.media;
-        img.alt = `Image from ${listData.title}`;
-        list.append(img)
+        if (Array.isArray(listData.media)) {
+          const imgContainer = document.createElement("div");
+          imgContainer.classList.add("d-flex", "flex-column", "justify-content-center", "align-items-center");
+          for (const imageUrl of listData.media) {
+            const img = document.createElement("img");
+            img.classList.add("img-fluid", "m-2");
+            img.style.maxWidth = "50%";
+            img.src = imageUrl;
+            img.alt = `Image from ${listData.title}`;
+            imgContainer.append(img);
+          }
+          list.append(imgContainer);
+        } else {
+          const img = document.createElement("img");
+          img.classList.add("img-fluid");
+          img.src = listData.media;
+          img.alt = `Image from ${listData.title}`;
+          list.append(img);
+        }
       }
 
     const body = document.createElement("p");

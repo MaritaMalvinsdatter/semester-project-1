@@ -25,6 +25,20 @@ export function setNewListingListener() {
         const formData = new FormData(form);
         const listing = Object.fromEntries(formData.entries());
         listing.tags = listing.tags.split(",");
+        listing.media = [];
+
+       // Add up to three media URLs to the listing.media array
+       for (let i = 1; i <= 3; i++) {
+        const mediaUrl = listing[`media${i}`];
+        if (mediaUrl) {
+          const response = await fetch(mediaUrl, { method: 'HEAD' });
+          if (response.ok && response.headers.get('Content-Type').startsWith('image/')) {
+            listing.media.push(mediaUrl);
+          } else {
+            console.warn(`Ignore invalid media URL: ${mediaUrl}`);
+          }
+        }
+      }
   
         const dateInput = form.querySelector("#endsAt");
         const date = new Date(dateInput.value);
