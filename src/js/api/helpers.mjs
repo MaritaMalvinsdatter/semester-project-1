@@ -1,7 +1,7 @@
 import { load, save, remove } from "./tokenStorage.mjs";
 import * as paths from "./constants.mjs";
 
-const userKey = "noroff-user-key";
+const userKey = "token";
 
 export function getUser () {
     const user = localStorage.getItem("profile");
@@ -9,9 +9,9 @@ export function getUser () {
 }
 
 export function isLoggedIn() {
-    const res = load(userKey);
-    if (res) {
-      const token = res["accessToken"];
+    const response = load(userKey);
+    if (response) {
+      const token = response["accessToken"];
       return token !== null;
     }
     return false;

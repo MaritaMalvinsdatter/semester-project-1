@@ -1,5 +1,4 @@
-// import { API_AUCTION_URL } from "../api/constants.mjs";
-// import { API_SELLER_URL } from "../api/constants.mjs";
+
 import { API_LISTINGS_URL} from "../api/constants.mjs";
 import { API_DESC_URL } from "../api/constants.mjs";
 import { DESC_ORDER } from "../api/constants.mjs";
@@ -16,7 +15,7 @@ export async function getList() {
     const response = await tokenFetch(updateListURL)
     const list = await response.json();
 
-    console.log(updateListURL);
+    // console.log(updateListURL);
 
     return list;
 }
@@ -34,7 +33,7 @@ export async function getListingSpecifics() {
     const queryString = document.location.search;
     const params = new URLSearchParams(queryString);
     const id = params.get("id");
-    console.log(id);
+    // console.log(id);
 
     if (!id) {
         console.error("listingID needed to get listing");
@@ -43,7 +42,7 @@ export async function getListingSpecifics() {
     const response = await tokenFetch(getSpecificsURL)
     const specifics = await response.json();
 
-    console.log(getSpecificsURL);
+    // console.log(getSpecificsURL);
 
     return specifics;
 }

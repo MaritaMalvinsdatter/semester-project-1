@@ -11,7 +11,6 @@
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="/src/js/api/constants.mjs" defer type="module"></script>
     <script src="/src/js/index.mjs" defer type="module"></script>
-    <script src="/src/js/modal.js"></script>
     <title>Home</title>
 </head>
 
@@ -28,7 +27,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">New Listing</a>
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#listingModal" id="myInput">New
+                                Listing</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Profile</a>
@@ -42,7 +42,7 @@
                                 <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
                                         id="myInput">Log In</a></li> -->
                                 <li><a class="dropdown-item" href="/login/login.html">Log In</a></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" id="log-out" href="#">Log Out</a></li>
                                 <li><a class="dropdown-item" href="#">My Listings</a></li>
                                 <li><a class="dropdown-item" href="/profile/index.html">My Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="#">Edit Profile</a></li> -->
@@ -96,6 +96,67 @@
                 </div>
             </div>
         </div> -->
+        <!-- New Listing Modal -->
+        <div class="modal fade" id="listingModal" tabindex="-1" aria-labelledby="listingModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-center">New Listing:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="create-new-listing">
+                            <div class="form-group row mx-3">
+                                <label for="title" class="col-form-label">Title: *</label>
+                                <div>
+                                    <input id="text" name="title" placeholder="Enter Title here" class="form-control"
+                                        required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <div>
+                                    <textarea id="textarea" name="description" placeholder="describe your product"
+                                        cols="20" rows="2" class="form-control" type="text"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="media">Media:</label>
+                                <div>
+                                    <input type="url" name="media1" class="form-control"
+                                        placeholder="Insert image URL 1 here" />
+                                    <input type="url" name="media2" class="form-control"
+                                        placeholder="Insert image URL 2 here" />
+                                    <input type="url" name="media3" class="form-control"
+                                        placeholder="Insert image URL 3 here" />
+                                </div>
+
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="media">Tags:</label>
+                                <div>
+                                    <input type="text" name="tags" class="form-control"
+                                        placeholder="separate tags with comma" />
+                                </div>
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="date">Auction ends at: *</label>
+                                <div>
+                                    <input type="date" id="endsAt" required="required" min="2023-02-21" max="2023-12-31"
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <div class="card-footer my-3 mx-3">
+                                <button type="submit" class="btn btn-primary btn-sm">Create New Listing</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- New Listing Modal Ends -->
         <h1 class="text-center my-5">Listings</h1>
         <div class="listing-container" class="m-5">
             <div id="listings-feed"
@@ -108,6 +169,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
+    <script src="/src/js/modal.js"></script>
 </body>
 
 
