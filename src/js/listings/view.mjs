@@ -1,6 +1,8 @@
 
 // View Full List of Auction Items
 
+import { isLoggedIn } from "../api/helpers.mjs";
+
 export function listTemplate(listData) {
     const list = document.createElement("div");
     list.classList.add("col", "container-fluid", "d-flex", "flex-column", "border", "border-primary", "m-3");
@@ -27,18 +29,22 @@ export function listTemplate(listData) {
     list.append(seller);
 
       const profileName = JSON.parse(window.localStorage.getItem('profile'))
+      
 
-      if (profileName.name === listData.seller.name) {
-        const btn = document.createElement("button");
-        // btn.classList.add("btn", "btn-primary", "btn-sm")
-        btn.innerHTML =`<a href="edit_list.html?id=${listData.id}" class="text-muted">Edit my list</a>`;
-        list.append(btn);;
-    } else {
+      if (isLoggedIn) {
         const btn = document.createElement("button");
         btn.classList.add("mb-2")
         btn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Place Bid</a>`;
-        list.append(btn);;
-    }
+        list.append(btn);
+
+        if (profileName.name === listData.seller.name) {
+          btn.remove();
+          const editBtn = document.createElement("button");
+          editBtn.classList.add("mb-2")
+          editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Edit Listing</a>`;
+          list.append(editBtn);
+        } 
+      }
 
     return list;
 }

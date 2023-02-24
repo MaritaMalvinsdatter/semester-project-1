@@ -15,7 +15,7 @@ export async function getList() {
     const response = await tokenFetch(updateListURL)
     const list = await response.json();
 
-    console.log(updateListURL);
+    // console.log(updateListURL);
 
     return list;
 }
