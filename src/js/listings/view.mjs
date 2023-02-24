@@ -22,6 +22,12 @@ export function listTemplate(listData) {
         });
       }
 
+      const bidCount = listData.bids.length;
+      const bid = document.createElement("h4");
+      bid.classList.add("text-center");
+      bid.innerHTML = `Total bids: ${bidCount}`;
+      list.append(bid);
+
     const seller = document.createElement("p");
     seller.classList.add("text-center")
     seller.innerHTML = `seller: ${listData.seller.name} <br>
@@ -86,18 +92,24 @@ export function listSpecificTemplate(listData) {
         const tags = document.createElement("label");
         tags.innerText = `Tags: ${listData.tags}`;
         list.append(tags)
-    } 
+    }
+
+    const bidTotal = listData.bids.reduce((total, bid) => total + bid.amount, 0);
+      const bid = document.createElement("h4");
+      bid.classList.add("text-center");
+      bid.innerHTML = `Bids Amount $: ${bidTotal}`;
+      list.append(bid);
 
     const profileName = JSON.parse(window.localStorage.getItem('profile'))
 
     // console.log(profileName.name);
     // console.log(listData.seller.name);
 
-    if (profileName.name === listData.seller.name) {
-            const btn = document.createElement("button");
-            // btn.classList.add("btn", "btn-primary", "btn-sm")
-            btn.innerHTML =`<a href="edit_list.html?id=${listData.id}" class="text-muted">Edit</a>`;
-            list.append(btn);
+    // if (profileName.name === listData.seller.name) {
+    //         const btn = document.createElement("button");
+    //         // btn.classList.add("btn", "btn-primary", "btn-sm")
+    //         btn.innerHTML =`<a href="edit_list.html?id=${listData.id}" class="text-muted">Edit</a>`;
+    //         list.append(btn);
             
             // const deleteBtn = document.createElement("button");
             // deleteBtn.classList.add("deletebtn");
@@ -106,12 +118,12 @@ export function listSpecificTemplate(listData) {
             // await removelist(listData.id)
             // })
 
-        } else {
-            const btn = document.createElement("button");
-            btn.classList.add("btn")
-            btn.innerHTML =`<a href="profile.html">Back to lists</a>`;
-            list.append(btn);;
-        }
+        // } else {
+        //     const btn = document.createElement("button");
+        //     btn.classList.add("btn")
+        //     btn.innerHTML =`<a href="profile.html">Back to lists</a>`;
+        //     list.append(btn);;
+        // }
 
     return list;
 }
