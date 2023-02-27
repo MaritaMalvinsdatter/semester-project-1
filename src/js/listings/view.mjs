@@ -109,7 +109,7 @@ export function listSpecificTemplate(listData) {
   let bidTotal = listData.bids.reduce((total, bid) => total + bid.amount, 0);
   const bid = document.createElement("h4");
   bid.classList.add("text-center");
-  bid.innerHTML = `Bids Amount $: ${bidTotal}`;
+  bid.innerHTML = `Highest Bids Amount $: ${bidTotal}`;
   list.append(bid);
 
   const profileInfo = JSON.parse(window.localStorage.getItem("profile"));
@@ -148,15 +148,16 @@ export function listSpecificTemplate(listData) {
           form.querySelector("#bidAmount").value = "";
           error.innerText = "";
         }
+      } else if (bidAmount > profileInfo.credits) {
+        error.innerText = "You don't have enough credit to make this bid";
       } else {
         error.innerText = "Bid amount must be greater than the current bid total";
       }
     });
-  
+
     form.append(error);
     list.append(form);
   }
-  
   return list;
 }
 
