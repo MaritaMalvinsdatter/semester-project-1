@@ -39,19 +39,28 @@ export function listTemplate(listData) {
       const profileInfo = JSON.parse(window.localStorage.getItem('profile'))
       
 
-      if (isLoggedIn) {
+      if (isLoggedIn()) {
         const btn = document.createElement("button");
         btn.classList.add("mb-2")
         btn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Place Bid</a>`;
         list.append(btn);
 
         if (profileInfo.name === listData.seller.name) {
-          btn.remove();
-          const editBtn = document.createElement("button");
-          editBtn.classList.add("mb-2")
-          editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Edit Listing</a>`;
-          list.append(editBtn);
+            btn.remove();
+            const editBtn = document.createElement("button");
+            editBtn.classList.add("mb-2")
+            editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Edit Listing</a>`;
+            list.append(editBtn);
         } 
+    } else {
+        // User is not logged in, hide the buttons
+        const btns = list.querySelectorAll("button");
+        btns.forEach(btn => btn.style.display = "none");
+        const messageBtn = document.createElement("button");
+        messageBtn.classList.add("mb-2");
+        messageBtn.innerHTML = `<a href="/login/login.html">Login to place bid and view details</a>`;
+        console.log("created login message:", messageBtn);
+        list.append(messageBtn)
       }
 
     return list;
