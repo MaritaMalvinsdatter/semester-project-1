@@ -3,7 +3,7 @@ import * as paths from "./constants.mjs";
 
 const userKey = "token";
 
-export function getUser () {
+export function getUser() {
     const user = localStorage.getItem("profile");
     return JSON.parse(user);
 }
