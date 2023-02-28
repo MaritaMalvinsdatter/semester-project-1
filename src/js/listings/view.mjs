@@ -4,6 +4,7 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
+import { setRemoveListingListener } from "./deleteListing.mjs"
 import { removeListing } from "./deleteListing.mjs"
 
 export function listTemplate(listData) {
@@ -134,6 +135,7 @@ export function listSpecificTemplate(listData) {
     });
     list.append(deleteBtn);
   }
+  
 
   if (profileInfo.name !== listData.seller.name) {
     const form = document.createElement("form");
