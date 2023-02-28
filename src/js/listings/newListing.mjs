@@ -62,7 +62,9 @@ export function setNewListingListener() {
       try {
         const response = await createNewListing(listing);
         console.log("response", response);
-        window.location.href = "/index.html";
+        setTimeout(() => {
+          window.location.href = "/index.html";
+        }, 1000); 
       } catch (error) {
         console.error(error);
         alert("Something went wrong, try again or go back.");
