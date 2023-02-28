@@ -11,21 +11,33 @@ import { setLogoutListener } from "./login_register/logout.mjs";
 
 const path = location.pathname
 
-if (path === "/login/login.html") {
-    setLoginFormListener()
-} else if (path === "/register/index.html") {
-    setRegisterFormListener()
-} else if (path === "/index.html") {
-    getListings()
-    setLogoutListener()
-    setNewListingListener()
-} else if (path === '/listingItem/index.html') {
-    getOneListing()
-} else if (path === '/profile/index.html') {
-    setProfilePage()
-    updateAvatar()
-}
-    
+switch (path) {
+    case "/login/login.html":
+      setLoginFormListener();
+      setLogoutListener();
+      break;
+    case "/register/index.html":
+      setRegisterFormListener();
+      setLogoutListener();
+      break;
+    case "/index.html":
+      getListings();
+      setNewListingListener();
+      setLogoutListener();
+      break;
+    case "/listingItem/index.html":
+      getOneListing();
+      setLogoutListener();
+      break;
+    case "/profile/index.html":
+      setProfilePage();
+      updateAvatar();
+      setLogoutListener();
+      break;
+    default:
+      setLogoutListener();
+      break;
+  } 
 
 // switch (path) {
 //     case "/":
