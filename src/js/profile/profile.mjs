@@ -4,7 +4,7 @@ import { load, save } from "../api/tokenStorage.mjs";
 // Fetch user info and displays on profile page
 export function setProfilePage() {
     const profile = load("profile");
-    console.log("Profile data:", profile);
+    // console.log("Profile data:", profile);
     const nameElem = document.querySelector("#profile-name");
     const emailElem = document.querySelector("#profile-email");
     const creditElem = document.querySelector("#profile-credit");
@@ -21,7 +21,7 @@ export function setProfilePage() {
     } else {
       delete profile.avatar;
     }
-    console.log("Profile data after setting avatar:", profile);
+    // console.log("Profile data after setting avatar:", profile);
 }
 
 // Updates avatar
