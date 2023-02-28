@@ -7,7 +7,7 @@ import { tokenFetch } from "../api/tokenFetch.mjs";
 import * as templates from "./view.mjs";
 // const action = "/lists";
 
-
+let listings = [];
 
 // gets list of aution items
 export async function getList() {
@@ -21,11 +21,29 @@ export async function getList() {
 }
 
 export async function getListings() {
-    const lists = await getList()
+    listings = await getList(); // assign the fetched list of items to the listings variable
     const container = document.querySelector("#listings-feed");
-    templates.renderLists(lists, container)
-    console.log(lists);
+    templates.renderLists(listings, container);
 }
+
+// Search in Listings
+
+export function searchListings() {
+    const searchInput = document.querySelector("#search-input");
+    const searchQuery = searchInput.value.toLowerCase();
+
+    const filteredListingsByTitle = listings.filter(listing => listing.title.toLowerCase().includes(searchQuery));
+    const filteredListingsBySeller = listings.filter(listing => listing.seller.name.toLowerCase().includes(searchQuery));
+
+    const filteredListings = [...filteredListingsByTitle, ...filteredListingsBySeller];
+
+    const container = document.querySelector("#listings-feed");
+    container.innerHTML = "";
+    templates.renderLists(filteredListings, container);
+}
+
+document.querySelector("#search-button").addEventListener("click", searchListings);
+
 
 // gets single listing
 export async function getListingSpecifics() {
