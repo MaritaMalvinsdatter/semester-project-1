@@ -42,7 +42,12 @@ export function searchListings() {
     templates.renderLists(filteredListings, container);
 }
 
-document.querySelector("#search-button").addEventListener("click", searchListings);
+const searchButton = document.querySelector("#search-button");
+if (searchButton) {
+  searchButton.addEventListener("click", searchListings);
+}
+
+
 
 
 // gets single listing
