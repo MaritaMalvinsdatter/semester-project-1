@@ -4,6 +4,7 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
+import { removeListing } from "./deleteListing.mjs"
 
 export function listTemplate(listData) {
     const list = document.createElement("div");
@@ -122,6 +123,17 @@ export function listSpecificTemplate(listData) {
   list.append(bid);
 
   const profileInfo = JSON.parse(window.localStorage.getItem("profile"));
+
+  if (profileInfo.name === listData.seller.name) {
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("deletebtn");
+    deleteBtn.innerText = "Delete Listing";
+    deleteBtn.addEventListener("click", async () => {
+      await removeListing(listData.id);
+      window.location.assign(`/index.html`);
+    });
+    list.append(deleteBtn);
+  }
 
   if (profileInfo.name !== listData.seller.name) {
     const form = document.createElement("form");
