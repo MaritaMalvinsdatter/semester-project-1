@@ -15,50 +15,64 @@ async function createNewListing(listingData) {
 }
 
 export function setNewListingListener() {
-    const modal = document.querySelector("#listingModal")
-    const form = modal.querySelector("#create-new-listing");
-  
-    if (form) {
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-  
-        const formData = new FormData(form);
-        const listing = Object.fromEntries(formData.entries());
-        listing.tags = listing.tags.split(",");
-        listing.media = [];
+  const modal = document.querySelector("#listingModal");
+  const form = modal.querySelector("#create-new-listing");
 
-       // Add up to three media URLs to the listing.media array
-       for (let i = 1; i <= 3; i++) {
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const listing = Object.fromEntries(formData.entries());
+      listing.tags = listing.tags.split(",");
+      listing.media = [];
+
+      // Add up to three media URLs to the listing.media array
+      for (let i = 1; i <= 3; i++) {
         const mediaUrl = listing[`media${i}`];
         if (mediaUrl) {
-          const response = await fetch(mediaUrl, { method: 'HEAD' });
-          if (response.ok && response.headers.get('Content-Type').startsWith('image/')) {
+          const response = await fetch(mediaUrl, { method: "HEAD" });
+          if (
+            response.ok &&
+            response.headers.get("Content-Type").startsWith("image/")
+          ) {
             listing.media.push(mediaUrl);
           } else {
             console.warn(`Ignore invalid media URL: ${mediaUrl}`);
           }
         }
       }
-  
-        const dateInput = form.querySelector("#endsAt");
-        const date = new Date(dateInput.value);
-        date.setHours(0, 0, 0, 0);
-        listing.endsAt = date.toISOString();
-  
-        console.log("listing", listing);
-  
-        try {
-          const response = await createNewListing(listing);
-          console.log("response", response);
-        } catch (error) {
-          console.error(error);
-        }
-  
-        form.reset();
-      });
-    }
+
+      const dateInput = form.querySelector("#endsAt");
+      const date = new Date(dateInput.value);
+      date.setHours(0, 0, 0, 0);
+
+      // Check if the end date is in the past
+      const currentDate = new Date();
+      currentDate.setHours(0, 0, 0, 0);
+      if (date < currentDate) {
+        alert("Auction end date cannot be set in the past.");
+        return;
+      }
+
+      listing.endsAt = date.toISOString();
+
+      console.log("listing", listing);
+
+      try {
+        const response = await createNewListing(listing);
+        console.log("response", response);
+        window.location.href = "/index.html";
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong, try again or go back.");
+      }
+
+      form.reset();
+    });
   }
-  
+}
+
 
 
 
