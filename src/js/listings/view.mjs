@@ -59,7 +59,7 @@ export function listTemplate(listData) {
         const messageBtn = document.createElement("button");
         messageBtn.classList.add("mb-2");
         messageBtn.innerHTML = `<a href="/login/login.html">Login to place bid and view details</a>`;
-        console.log("created login message:", messageBtn);
+        // console.log("created login message:", messageBtn);
         list.append(messageBtn)
       }
 
