@@ -4,6 +4,7 @@ import { load, save } from "../api/tokenStorage.mjs";
 // Fetch user info and displays on profile page
 export function setProfilePage() {
     const profile = load("profile");
+    console.log("Profile data:", profile);
     const nameElem = document.querySelector("#profile-name");
     const emailElem = document.querySelector("#profile-email");
     const creditElem = document.querySelector("#profile-credit");
@@ -15,7 +16,12 @@ export function setProfilePage() {
 
     if (profile.avatar) {
         avatarElem.src = profile.avatar;
+    } else if (profile.avatar === "null") {
+      delete profile.avatar;
+    } else {
+      delete profile.avatar;
     }
+    console.log("Profile data after setting avatar:", profile);
 }
 
 // Updates avatar
@@ -25,8 +31,6 @@ const avatarElem = document.getElementById("profile-avatar");
 const editAvatarBtn = document.getElementById("edit-avatar-btn");
 const avatarInput = document.getElementById("avatar-input");
 const updateAvatarBtn = document.getElementById("update-avatar-btn");
-
-
 
 export function updateAvatar() {
 
@@ -42,6 +46,7 @@ export function updateAvatar() {
         const newAvatar = avatarInput.value;
         profile.avatar = newAvatar;
         save("profile", profile);
+        setProfilePage(); 
         avatarElem.src = newAvatar;
         avatarInput.hidden = true;
         updateAvatarBtn.hidden = true;
@@ -49,6 +54,5 @@ export function updateAvatar() {
       });
 }
 
-// editAvatarBtn.addEventListener("click", updateAvatar);
 
 

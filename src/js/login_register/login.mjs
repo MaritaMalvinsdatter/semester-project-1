@@ -14,7 +14,11 @@ async function login(user) {
 
     if (accessToken) {
         storage.save("token", accessToken);
-        storage.save("profile", profile);
+        // Load profile data from localStorage
+        const storedProfile = storage.load("profile");
+        // Merge stored profile data with server-provided profile data
+        const mergedProfile = { ...storedProfile, ...profile };
+        storage.save("profile", mergedProfile);
         window.location.assign("/profile/index.html");
     } else {
         userAlert.classList.add("alert-warning");
