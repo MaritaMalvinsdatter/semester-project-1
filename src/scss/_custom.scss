@@ -26,16 +26,27 @@
 
 .login-btn,
 .register-btn,
-.edit-btn {
+.editBtn,
+.bidBtn,
+.search-button {
     background-color: #05476A;
     border: none;
+    color: #FFF6CB;
 }
 
 .login-btn:hover,
 .register-btn:hover,
-.edit-btn:hover {
+.deleteBtn,
+.editBtn:hover,
+.bidBtn:hover,
+.search-button:hover {
     border: #05476A solid;
     color: #05476A;
+}
+
+button a {
+    color: #FFF6CB;
+    text-decoration: none;
 }
 
 h1 {
