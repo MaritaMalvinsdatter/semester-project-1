@@ -107,9 +107,25 @@ export function listSpecificTemplate(listData) {
     }
   }
 
-  const body = document.createElement("p");
-  body.innerHTML = `Auction ends at: ${listData.endsAt}`;
-  list.append(body);
+const endTime = new Date(listData.endsAt).getTime();
+const countdownElem = document.createElement("div");
+list.append(countdownElem);
+
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const distance = endTime - now;
+
+  if (distance < 0) {
+    clearInterval(intervalId);
+    countdownElem.innerHTML = "Auction has ended.";
+  } else {
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    countdownElem.innerHTML = `Auction ends in: ${days}d ${hours}h`;
+  }
+};
+
+const intervalId = setInterval(updateCountdown, 1000);
 
   if (listData.tags) {
       const tags = document.createElement("label");
