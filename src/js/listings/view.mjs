@@ -4,7 +4,7 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
-import { setRemoveListingListener } from "./deleteListing.mjs"
+import { setEditListingListener } from "./editListing.mjs"
 import { removeListing } from "./deleteListing.mjs"
 
 export function listTemplate(listData) {
@@ -69,7 +69,7 @@ export function listTemplate(listData) {
 }
 
 
-// Auction Listing Specifics 
+// AUCTION LISTING SPECIFICS 
 
 export function listSpecificTemplate(listData) {
   const list = document.createElement("div");
@@ -150,6 +150,18 @@ const intervalId = setInterval(updateCountdown, 1000);
       window.location.assign(`/index.html`);
     });
     list.append(deleteBtn);
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("editbtn");
+    editBtn.setAttribute("data-bs-toggle", "modal")
+    editBtn.setAttribute("data-bs-target", "editListingmodal")
+    editBtn.innerText = "Edit Listing";
+    // editBtn.addEventListener("click", async () => {
+    // await setEditListingListener(); // call the function to open the modal
+    // const modal = document.querySelector("#editListingModal");
+    // modal.style.display = "block"; // show the modal
+    // });
+    list.append(editBtn);
   }
   
 
