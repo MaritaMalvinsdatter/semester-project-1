@@ -6,6 +6,7 @@ import { setNewListingListener } from "./listings/newListing.mjs";
 import { setProfilePage, updateAvatar } from "./profile/profile.mjs";
 import * as paths from "./api/constants.mjs";
 import { setRemoveListingListener } from "./listings/deleteListing.mjs";
+import { setEditListingListener } from "./listings/editListing.mjs"
 import { setLogoutListener } from "./login_register/logout.mjs";
 
 // console.log(paths.API_SELLER_URL)
@@ -29,7 +30,8 @@ switch (path) {
     case "/listingItem/index.html":
       getOneListing();
       setLogoutListener();
-      setRemoveListingListener()
+      setEditListingListener();
+      setRemoveListingListener();
       break;
     case "/profile/index.html":
       setProfilePage();
