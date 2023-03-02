@@ -5,7 +5,7 @@ const action = "/auth/login";
 const method = "post";
 const userAlert = document.querySelector("#error-alert");
 
-async function login(user) {
+export async function login(user) {
     userAlert.innerHTML = "";
     const loginURL = API_AUCTION_URL + action;
     const body = JSON.stringify(user);
