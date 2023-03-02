@@ -144,7 +144,7 @@ export function listTemplate(listData) {
       btns.forEach(btn => btn.style.display = "none");
       const messageBtn = document.createElement("button");
       messageBtn.classList.add("mb-2", "bidBtn");
-      messageBtn.innerHTML = `<a href="/login/login.html">Login to place bid and view details</a>`;
+      messageBtn.innerHTML = `<a href="/login/index.html">Login to place bid and view details</a>`;
       list.append(messageBtn);
   }
 
