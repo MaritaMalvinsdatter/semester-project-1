@@ -236,9 +236,10 @@ const intervalId = setInterval(updateCountdown, 1000);
     list.append(deleteBtn);
 
     const editBtn = document.createElement("button");
-    editBtn.classList.add("btn", "editBtn", "mt-2");
+    editBtn.classList.add("btn", "editBtn", "mt-2", "nav-link");
     editBtn.setAttribute("data-bs-toggle", "modal")
-    editBtn.setAttribute("data-bs-target", "editListingmodal")
+    editBtn.setAttribute("data-bs-target", "#editListingModal")
+    editBtn.setAttribute("id", "myInput")
     editBtn.innerText = "Edit Listing";
     // editBtn.addEventListener("click", async () => {
     // await setEditListingListener(); // call the function to open the modal

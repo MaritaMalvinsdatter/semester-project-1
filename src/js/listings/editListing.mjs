@@ -29,18 +29,24 @@ export async function setEditListingListener() {
 
     if (form) {
 
-        // const button = form.querySelector("button");
-        // button.disabled = true;
+        const button = form.querySelector("button");
+        button.disabled = true;
 
-        // const listing = await getListingSpecifics(id);
+        const listing = await getListingSpecifics(id);
 
         // shows orignal input
-        // form.title.value = listing.title;
-        // form.description.value = listing.description;
-        // form.media = listing.media;
-        // form.tags.value = listing.tags;
+        form.title.value = listing.title;
+        form.description.value = listing.description;
+        form.media1.value = listing.media[0];
+        form.media2.value = listing.media[1];
+        form.media3.value = listing.media[2];
+        console.log(listing.media)
+        form.tags.value = listing.tags;
 
-        // button.disabled = false;
+        let endDate = listing.endsAt.substring(0,10);
+        form.endsAt.value = endDate;
+
+        button.disabled = false;
     
         form.addEventListener("submit", async (event) => {
             event.preventDefault()
@@ -50,9 +56,27 @@ export async function setEditListingListener() {
             listing.id = id;
 
             listing.tags = listing.tags.split(",");
+
+            listing.media = [];
+
+      // Add up to three media URLs to the listing.media array
+        for (let i = 1; i <= 3; i++) {
+            const mediaUrl = form[`media${i}`].value;
+            if (mediaUrl) {
+            const response = await fetch(mediaUrl, { method: "HEAD" });
+            if (
+                response.ok &&
+                response.headers.get("Content-Type").startsWith("image/")
+            ) {
+                listing.media.push(mediaUrl);
+            } else {
+                console.warn(`Ignore invalid media URL: ${mediaUrl}`);
+            }
+            }
+        }
             
             editListing(listing)
-            setTimeout(function() { window.location.assign(`listingItem/index.html?id=${listing.id}`); }, 500); 
+            setTimeout(function() { window.location.assign(`/listingItem/index.html?id=${listing.id}`); }, 500); 
         })
     }
 }

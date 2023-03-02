@@ -14,7 +14,7 @@ export async function removeListing(id) {
     });
   
     if (response.ok) {
-      return await response.json();
+      alert("Your listing has been deleted!");
     } else {
       const errorMessage = `Failed to delete listing with status ${response.status}`;
       throw new Error(errorMessage);
@@ -31,7 +31,7 @@ export async function removeListing(id) {
       removeButton.addEventListener("click", async () => {
         try {
           await removeListing(id);
-          window.location.assign(`/index.html`);
+          window.location.assign("../profile/index.html");
         } catch (error) {
           console.error(error);
           // Handle error, e.g. display error message to user
