@@ -8,16 +8,35 @@ import * as templates from "./view.mjs";
 // const action = "/lists";
 
 let listings = [];
+let moreItems = 0;
+let increments = 6;
 
 // gets list of aution items
 export async function getList() {
-    const updateListURL = `${API_DESC_URL}`;
+    const updateListURL = `${API_DESC_URL}&limit=${increments}`;
     const response = await tokenFetch(updateListURL)
     const list = await response.json();
-
+    moreItems = moreItems + increments;
     // console.log(updateListURL);
 
     return list;
+}
+
+export async function viewMoreButton() {
+    const viewMoreMore = document.querySelector(".viewMore")
+    viewMoreMore.addEventListener("click", () => {
+        viewMore()
+    });
+}
+
+export async function viewMore() {
+    const updateListURL = `${API_DESC_URL}&limit=${increments}&offset=${moreItems}`;
+    const response = await tokenFetch(updateListURL)
+    const list = await response.json();
+    moreItems = moreItems + increments;
+    const container = document.querySelector("#listings-feed");
+    templates.renderLists(list, container);
+    console.log(response);
 }
 
 export async function getListings() {

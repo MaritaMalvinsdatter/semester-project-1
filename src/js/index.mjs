@@ -2,6 +2,7 @@ import { setRegisterFormListener } from "./login_register/register.mjs";
 import { setLoginFormListener } from "./login_register/login.mjs";
 import { getListings } from "./listings/getLists.mjs";
 import { getOneListing } from "./listings/getLists.mjs";
+import { viewMoreButton } from "./listings/getLists.mjs";
 import { setNewListingListener } from "./listings/newListing.mjs";
 import { setProfilePage, updateAvatar } from "./profile/profile.mjs";
 import { getOwnListingings } from "./profile/viewOwnList.mjs";
@@ -27,6 +28,7 @@ switch (path) {
       getListings();
       setNewListingListener();
       setLogoutListener();
+      viewMoreButton();
       break;
     case "/listingItem/index.html":
       getOneListing();

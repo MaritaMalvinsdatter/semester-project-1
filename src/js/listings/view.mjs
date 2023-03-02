@@ -4,8 +4,8 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
-import { setEditListingListener } from "./editListing.mjs"
-import { removeListing } from "./deleteListing.mjs"
+import { removeListing } from "./deleteListing.mjs";
+import { viewMore } from "./getLists.mjs";
 
 export function listTemplate(listData) {
   const list = document.createElement("div");
@@ -150,8 +150,6 @@ export function listTemplate(listData) {
 
   return list;
 }
-
-
 
 // AUCTION LISTING SPECIFICS 
 
