@@ -4,6 +4,7 @@ import { getListings } from "./listings/getLists.mjs";
 import { getOneListing } from "./listings/getLists.mjs";
 import { setNewListingListener } from "./listings/newListing.mjs";
 import { setProfilePage, updateAvatar } from "./profile/profile.mjs";
+import { getOwnListingings } from "./profile/viewOwnList.mjs";
 import * as paths from "./api/constants.mjs";
 import { setRemoveListingListener } from "./listings/deleteListing.mjs";
 import { setEditListingListener } from "./listings/editListing.mjs"
@@ -36,6 +37,7 @@ switch (path) {
     case "/profile/index.html":
       setProfilePage();
       updateAvatar();
+      getOwnListingings()
       setLogoutListener();
       break;
     default:
