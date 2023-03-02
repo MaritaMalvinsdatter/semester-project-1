@@ -4,72 +4,154 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
-import { setRemoveListingListener } from "./deleteListing.mjs"
-import { removeListing } from "./deleteListing.mjs"
+import { removeListing } from "./deleteListing.mjs";
+import { viewMore } from "./getLists.mjs";
 
 export function listTemplate(listData) {
-    const list = document.createElement("div");
-    list.classList.add("col", "container-fluid", "d-flex", "flex-column", "border", "border-primary", "m-3");
-    list.innerHTML = `<a href="listingItem/index.html?id=${listData.id}" class="text-decoration-none"><h2 class="text-muted text-center">${listData.title}</h2></a>`;
+  const list = document.createElement("div");
+  list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
 
-    if (listData.media && Array.isArray(listData.media)) {
-        const imgContainer = document.createElement("div");
-        imgContainer.classList.add("d-flex", "flex-wrap", "mb-3");
-        list.append(imgContainer);
-      
-        listData.media.forEach(url => {
-          const img = document.createElement("img");
-          img.classList.add("img-fluid", "mr-3", "mb-3");
-          img.src = url; 
-          img.alt = `Image from ${listData.title}`;
-          imgContainer.append(img);
-        });
-      }
+  const titleLink = document.createElement("a");
+  titleLink.href = `listingItem/index.html?id=${listData.id}`;
+  titleLink.classList.add("text-decoration-none");
+  list.append(titleLink);
 
-      const bidCount = listData.bids.length;
-      const bid = document.createElement("h4");
-      bid.classList.add("text-center");
-      bid.innerHTML = `Total bids: ${bidCount}`;
-      list.append(bid);
+  const title = document.createElement("h2");
+  title.classList.add("text-muted", "text-center");
+  title.innerText = listData.title;
+  titleLink.append(title);
 
-    const seller = document.createElement("p");
-    seller.classList.add("text-center")
-    seller.innerHTML = `seller: ${listData.seller.name} <br>
-    <img src="${listData.seller.avatar}" width="50" height="60">`;
-    list.append(seller);
-
-      const profileInfo = JSON.parse(window.localStorage.getItem('profile'))
-      
-
-      if (isLoggedIn()) {
-        const btn = document.createElement("button");
-        btn.classList.add("mb-2")
-        btn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Place Bid</a>`;
-        list.append(btn);
-
-        if (profileInfo.name === listData.seller.name) {
-            btn.remove();
-            const editBtn = document.createElement("button");
-            editBtn.classList.add("mb-2")
-            editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}" class="text-muted">Edit Listing</a>`;
-            list.append(editBtn);
-        } 
+  if (listData.media && Array.isArray(listData.media)) {
+    if (listData.media.length > 1) {
+      // create image carousel
+      const carouselContainer = document.createElement("div");
+      carouselContainer.classList.add("carousel", "slide", "d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
+      carouselContainer.setAttribute("data-bs-ride", "carousel");
+      carouselContainer.id = `listing-${listData.id}-carousel`; // Add ID for targeting in event listeners
+      list.append(carouselContainer);
+  
+      const carouselInner = document.createElement("div");
+      carouselInner.classList.add("carousel-inner");
+      carouselInner.style.width = "53%";
+      carouselContainer.append(carouselInner);
+  
+      listData.media.forEach((url, index) => {
+        const carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+        if (index === 0) {
+          carouselItem.classList.add("active");
+        }
+        carouselInner.append(carouselItem);
+  
+        const img = document.createElement("img");
+        img.classList.add("img-fluid", "mr-3", "mb-3");
+        img.style.width = "200px";
+        img.style.height = "200px";
+        img.style.objectFit = "cover";
+        img.src = url;
+        img.alt = `Image from ${listData.title}`;
+        carouselItem.append(img);
+      });
+  
+      const carouselPrev = document.createElement("button");
+      carouselPrev.classList.add("carousel-control-prev");
+      carouselPrev.setAttribute("type", "button");
+      carouselPrev.setAttribute("data-bs-target", `#listing-${listData.id}-carousel`);
+      carouselPrev.setAttribute("data-bs-slide", "prev");
+      carouselContainer.append(carouselPrev);
+  
+      // const carouselPrevIcon = document.createElement("span");
+      // carouselPrevIcon.classList.add("carousel-control-prev-icon");
+      // carouselPrevIcon.setAttribute("aria-hidden", "true");
+      // carouselPrev.append(carouselPrevIcon);
+  
+      const carouselPrevText = document.createElement("i");
+      carouselPrevText.classList.add("fa-solid", "fa-chevron-left");
+      carouselPrevText.style.color = "black";
+      carouselPrevText.style.fontSize = "30px"
+      carouselPrev.append(carouselPrevText);
+  
+      const carouselNext = document.createElement("button");
+      carouselNext.classList.add("carousel-control-next");
+      carouselNext.setAttribute("type", "button");
+      carouselNext.setAttribute("data-bs-target", `#listing-${listData.id}-carousel`);
+      carouselNext.setAttribute("data-bs-slide", "next");
+      carouselContainer.append(carouselNext);
+  
+      const carouselNextText = document.createElement("i");
+      carouselNextText.classList.add("fa-solid", "fa-chevron-right");
+      carouselNextText.style.color = "black";
+      carouselNextText.style.fontSize = "30px"
+      carouselNext.append(carouselNextText);
+  
+      // Add event listeners for carousel controls
+      carouselPrev.addEventListener("click", () => {
+        const carousel = new bootstrap.Carousel(carouselContainer);
+        carousel.prev();
+      });
+  
+      carouselNext.addEventListener("click", () => {
+        const carousel = new bootstrap.Carousel(carouselContainer);
+        carousel.next();
+      });
     } else {
-        // User is not logged in, hide the buttons
-        const btns = list.querySelectorAll("button");
-        btns.forEach(btn => btn.style.display = "none");
-        const messageBtn = document.createElement("button");
-        messageBtn.classList.add("mb-2");
-        messageBtn.innerHTML = `<a href="/login/login.html">Login to place bid and view details</a>`;
-        // console.log("created login message:", messageBtn);
-        list.append(messageBtn)
-      }
+      // create image container
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
+      list.append(imgContainer);
 
-    return list;
+      const img = document.createElement("img");
+      img.classList.add("img-fluid", "mr-3", "mb-3");
+      img.style.width = "200px";
+      img.style.height = "200px";
+      img.style.objectFit = "cover";
+      img.src = listData.media[0];
+      img.alt = `Image from ${listData.title}`;
+      imgContainer.append(img);
+    }
+  }
+
+  const bidCount = listData.bids.length;
+  const bid = document.createElement("h4");
+  bid.classList.add("text-center");
+  bid.innerHTML = `Total bids: ${bidCount}`;
+  list.append(bid);
+
+  const seller = document.createElement("p");
+  seller.classList.add("text-center")
+  seller.innerHTML = `seller: ${listData.seller.name} <br>
+  <img src="${listData.seller.avatar}" width="50" height="60">`;
+  list.append(seller);
+
+  const profileInfo = JSON.parse(window.localStorage.getItem('profile'));
+
+  if (isLoggedIn()) {
+      const btn = document.createElement("button");
+      btn.classList.add("mb-2", "bidBtn")
+      btn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}">Place Bid</a>`;
+      list.append(btn);
+
+      if (profileInfo.name === listData.seller.name) {
+          btn.remove();
+          const editBtn = document.createElement("button");
+          editBtn.classList.add("mb-2", "editBtn")
+          editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
+          list.append(editBtn);
+      } 
+  } else {
+      // User is not logged in, hide the buttons
+      const btns = list.querySelectorAll("button");
+      btns.forEach(btn => btn.style.display = "none");
+      const messageBtn = document.createElement("button");
+      messageBtn.classList.add("mb-2", "bidBtn");
+      messageBtn.innerHTML = `<a href="/login/index.html">Login to place bid and view details</a>`;
+      list.append(messageBtn);
+  }
+
+  return list;
 }
 
-
-// Auction Listing Specifics 
+// AUCTION LISTING SPECIFICS 
 
 export function listSpecificTemplate(listData) {
   const list = document.createElement("div");
@@ -143,13 +225,26 @@ const intervalId = setInterval(updateCountdown, 1000);
 
   if (profileInfo.name === listData.seller.name) {
     const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("deletebtn");
+    deleteBtn.classList.add("btn", "deleteBtn");
     deleteBtn.innerText = "Delete Listing";
     deleteBtn.addEventListener("click", async () => {
       await removeListing(listData.id);
       window.location.assign(`/index.html`);
     });
     list.append(deleteBtn);
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("btn", "editBtn", "mt-2", "nav-link");
+    editBtn.setAttribute("data-bs-toggle", "modal")
+    editBtn.setAttribute("data-bs-target", "#editListingModal")
+    editBtn.setAttribute("id", "myInput")
+    editBtn.innerText = "Edit Listing";
+    // editBtn.addEventListener("click", async () => {
+    // await setEditListingListener(); // call the function to open the modal
+    // const modal = document.querySelector("#editListingModal");
+    // modal.style.display = "block"; // show the modal
+    // });
+    list.append(editBtn);
   }
   
 
@@ -160,7 +255,7 @@ const intervalId = setInterval(updateCountdown, 1000);
         <label for="bidAmount">Bid Amount:</label>
         <input type="number" class="form-control" id="bidAmount" required>
       </div>
-      <button type="submit" class="btn btn-primary">Place Bid</button>
+      <button type="submit" class="btn bidBtn">Place Bid</button>
     `;
   
     const error = document.createElement("p");

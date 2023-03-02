@@ -42,7 +42,7 @@
                             <ul class="dropdown-menu">
                                 <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
                                         id="myInput">Log In</a></li> -->
-                                <li><a class="dropdown-item" href="/login/login.html">Log In</a></li>
+                                <li><a class="dropdown-item" href="/login/index.html">Log In</a></li>
                                 <li><a class="dropdown-item" id="log-out" href="#">Log Out</a></li>
                                 <li><a class="dropdown-item" href="/profile/index.html">My Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="#">Edit Profile</a></li> -->
@@ -58,46 +58,69 @@
         </nav>
     </header>
     <main>
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="p-5" id="listing-specific"></div>
+        <!--Edit Listing Modal -->
+        <div class="modal fade" id="editListingModal" tabindex="-1" aria-labelledby="editListingModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center">Login:</h1>
+                        <h1 class="modal-title fs-5 text-center">Edit Listing:</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="loginForm" method="get" action="/index.html">
-                            <div class="form-outline mb-4">
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="email">Email:</label>
-                                    <input type="email" name="email" pattern="^[\w\-.]+@(stud.)?noroff.no$"
-                                        title="only an email registered within the Noroff domain can register"
-                                        class="form-control" placeholder="email address" required />
+                        <form id="edit-listing">
+                            <div class="form-group row mx-3">
+                                <label for="title" class="col-form-label">Title: *</label>
+                                <div>
+                                    <input id="text" name="title" placeholder="Enter Title here" class="form-control"
+                                        required="required" type="text">
                                 </div>
                             </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="password">Password:</label>
-                                <input type="password" name="password" minlength="8" class="form-control"
-                                    placeholder="minimum 8 characters" required />
+                            <div class="form-group row mx-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <div>
+                                    <textarea id="textarea" name="description" placeholder="describe your product"
+                                        cols="20" rows="2" class="form-control" type="text"></textarea>
+                                </div>
                             </div>
-                            <div class="text-center pt-1 mb-2 pb-1 d-flex flex-column">
-                                <button class="btn login-btn" type="submit">Login</button>
-                                <div id="error-alert" class="alert text-center"></div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="media">Media:</label>
+                                <div>
+                                    <input type="url" name="media1" class="form-control"
+                                        placeholder="Insert image URL 1 here" />
+                                    <input type="url" name="media2" class="form-control"
+                                        placeholder="Insert image URL 2 here" />
+                                    <input type="url" name="media3" class="form-control"
+                                        placeholder="Insert image URL 3 here" />
+                                </div>
+
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="media">Tags:</label>
+                                <div>
+                                    <input type="text" name="tags" class="form-control"
+                                        placeholder="separate tags with comma" />
+                                </div>
+                            </div>
+                            <div class="form-group row mx-3">
+                                <label class="col-form-label" for="date">Auction ends at: *</label>
+                                <div>
+                                    <input type="date" id="endsAt" required="required" min="2023-02-21" max="2023-12-31"
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <div class="card-footer my-3 mx-3">
+                                <button type="submit" class="btn btn-primary btn-sm">Update Listing</button>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <div class="d-flex align-items-center justify-content-center pb-4">
-                            <p class="mb-0 me-2">Don't have an account?</p>
-                            <a href="/register/index.html">Create New Account</a>
-                        </div>
+                    <div class="modal-footer mb-2">
                     </div>
                 </div>
             </div>
-        </div> -->
-        <div class="p-5" id="listing-specific"></div>
-
+        </div>
+        <!-- Modal Ends -->
     </main>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

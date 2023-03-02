@@ -41,7 +41,7 @@
                             <ul class="dropdown-menu">
                                 <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
                                         id="myInput">Log In</a></li> -->
-                                <li><a class="dropdown-item" href="/login/login.html">Log In</a></li>
+                                <li><a class="dropdown-item" href="/login/index.html">Log In</a></li>
                                 <li><a class="dropdown-item" id="log-out" href="#">Log Out</a></li>
                                 <li><a class="dropdown-item" href="/profile/index.html">My Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="#">Edit Profile</a></li> -->
@@ -120,26 +120,26 @@
         </div>
         <!-- New Listing Modal Ends -->
         <!-- SEARCH -->
-        <div class="mt-5">
+        <div class="mt-5 d-flex justify-content-center">
             <form class="d-flex" role="search">
                 <input id="search-input" type="search" id="form1" class="form-control"
                     placeholder="Search for title or name of seller" />
                 <label class="form-label" for="form1"></label>
-                <button id="search-button" class="btn btn-outline-success" type="button">Search</button>
+                <button id="search-button" class="btn search-button" type="button">Search</button>
             </form>
         </div>
         <h1 class="text-center my-5">Listings</h1>
         <div class="listing-container" class="m-5">
-            <div id="listings-feed"
-                class="row justify-content-around row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
+            <div id="listings-feed" class="row justify-content-around"></div>
         </div>
+        <button class="btn viewMore">View More</button>
     </main>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-        crossorigin="anonymous"></script> -->
+        crossorigin="anonymous"></script>
     <script src="/src/js/modal.js"></script>
 </body>
 
