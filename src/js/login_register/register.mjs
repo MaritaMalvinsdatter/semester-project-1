@@ -1,6 +1,7 @@
 import { API_AUCTION_URL } from "../api/constants.mjs";
 import { save } from "../api/tokenStorage.mjs";
 import { setLoginFormListener } from "../login_register/login.mjs";
+import { login } from "./login.mjs";
 
 const action = "/auth/register";
 const method = "post";
@@ -11,22 +12,16 @@ async function register(user) {
     const body = JSON.stringify(user);
     const response = await fetch(registerURL, { headers: { "Content-Type": "application/json" }, method, body });
 
-
     const result = await response.json();
     console.log(result);
     
     if (result) {
-        setTimeout(() => {
-            window.location.replace("/profile/index.html");
-            setLoginFormListener();
-        }, 1000); // delay of 1 second
+            login(user);
     } else {
         userAlert.classList.add("alert-warning");
         userAlert.innerHTML += `Something went wrong, please try again`;
     }
-    
     return result;
-
 }
 
 export function setRegisterFormListener() {
