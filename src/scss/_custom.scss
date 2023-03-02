@@ -28,7 +28,8 @@
 .register-btn,
 .editBtn,
 .bidBtn,
-.search-button {
+.search-button,
+.avatar-btn {
     background-color: #05476A;
     border: none;
     color: #FFF6CB;
@@ -39,7 +40,8 @@
 .deleteBtn,
 .editBtn:hover,
 .bidBtn:hover,
-.search-button:hover {
+.search-button:hover,
+.avatar-btn:hover {
     border: #05476A solid;
     color: #05476A;
 }
