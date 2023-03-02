@@ -1,6 +1,7 @@
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_AUCTION_PROFILE } from "../api/constants.mjs";
 import { API_LISTINGS_CONST } from "../api/constants.mjs";
+import { API_SELLER } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import { getUser } from "../api/helpers.mjs";
 // import * as templates from "../listings/view.mjs";
@@ -15,7 +16,7 @@ function ownListTemplate(listData) {
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
 
   const titleLink = document.createElement("a");
-  titleLink.href = `listingItem/index.html?id=${listData.id}`;
+  titleLink.href = `/listingItem/index.html?id=${listData.id}`;
   titleLink.classList.add("text-decoration-none");
   list.append(titleLink);
 
@@ -24,21 +25,29 @@ function ownListTemplate(listData) {
   title.innerText = listData.title;
   titleLink.append(title);
 
-  let bidTotal = listData.bids.reduce((total, bid) => total + bid.amount, 0);
+  let bidTotal = listData._count.bids
   const bid = document.createElement("h4");
   bid.classList.add("text-center");
-  bid.innerHTML = `Highest Bids Amount $: ${bidTotal}`;
+  bid.innerHTML = `Total Bids: ${bidTotal}`;
   list.append(bid);
 
-  const profileInfo = JSON.parse(window.localStorage.getItem('profile'));
+  const imgContainer = document.createElement("div");
+  imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
+  list.append(imgContainer);
 
-      if (profileInfo.name === listData.seller.name) {
-          btn.remove();
-          const editBtn = document.createElement("button");
-          editBtn.classList.add("mb-2", "editBtn")
-          editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
-          list.append(editBtn);
-      } 
+  const img = document.createElement("img");
+  img.classList.add("img-fluid", "mr-3", "mb-3");
+  img.style.width = "200px";
+  img.style.height = "200px";
+  img.style.objectFit = "cover";
+  img.src = listData.media[0];
+  img.alt = `Image from ${listData.title}`;
+  imgContainer.append(img);
+
+  const editBtn = document.createElement("button");
+  editBtn.classList.add("mb-2", "editBtn")
+  editBtn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
+  list.append(editBtn);
 
   return list;
 }
