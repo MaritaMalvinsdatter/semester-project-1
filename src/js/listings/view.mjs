@@ -291,6 +291,7 @@ const intervalId = setInterval(updateCountdown, 1000);
 
     form.append(error);
     list.append(form);
+    console.log(listData);
   }
   return list;
 }
