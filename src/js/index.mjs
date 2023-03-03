@@ -15,8 +15,47 @@ import { setLogoutListener } from "./login_register/logout.mjs";
 
 const path = location.pathname
 
-switch (path) {
+// switch (path) {
+//     case "/":
+//       break;
+//     case "/login/index.html":
+//       setLoginFormListener();
+//       setLogoutListener();
+//       break;
+//     case "/register/index.html":
+//       setRegisterFormListener();
+//       setLogoutListener();
+//       break;
+//     case "/index.html":
+//       getListings();
+//       setNewListingListener();
+//       setLogoutListener();
+//       viewMoreButton();
+//       break;
+//     case "/listingItem/index.html":
+//       getOneListing();
+//       setLogoutListener();
+//       setEditListingListener();
+//       setRemoveListingListener();
+//       break;
+//     case "/profile/index.html":
+//       setProfilePage();
+//       updateAvatar();
+//       getOwnListingings()
+//       setLogoutListener();
+//       break;
+//     default:
+//       setLogoutListener();
+//       break;
+//   } 
+
+  switch (path) {
     case "/":
+    case "/index.html":
+      getListings();
+      setNewListingListener();
+      setLogoutListener();
+      viewMoreButton();
       break;
     case "/login/index.html":
       setLoginFormListener();
@@ -25,12 +64,6 @@ switch (path) {
     case "/register/index.html":
       setRegisterFormListener();
       setLogoutListener();
-      break;
-    case "/index.html":
-      getListings();
-      setNewListingListener();
-      setLogoutListener();
-      viewMoreButton();
       break;
     case "/listingItem/index.html":
       getOneListing();
@@ -47,7 +80,7 @@ switch (path) {
     default:
       setLogoutListener();
       break;
-  } 
+  }
 
 // switch (path) {
 //     case "/":
