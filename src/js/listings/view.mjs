@@ -12,7 +12,7 @@ export function listTemplate(listData) {
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
 
   const titleLink = document.createElement("a");
-  titleLink.href = `listingItem/index.html?id=${listData.id}`;
+  titleLink.href = `/listingItem/index.html?id=${listData.id}`;
   titleLink.classList.add("text-decoration-none");
   list.append(titleLink);
 
@@ -128,14 +128,14 @@ export function listTemplate(listData) {
   if (isLoggedIn()) {
       const btn = document.createElement("button");
       btn.classList.add("mb-2", "bidBtn")
-      btn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}">Place Bid</a>`;
+      btn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">Place Bid</a>`;
       list.append(btn);
 
       if (profileInfo.name === listData.seller.name) {
           btn.remove();
           const editBtn = document.createElement("button");
           editBtn.classList.add("mb-2", "editBtn")
-          editBtn.innerHTML =`<a href="listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
+          editBtn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
           list.append(editBtn);
       } 
   } else {
