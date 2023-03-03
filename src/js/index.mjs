@@ -17,6 +17,7 @@ const path = location.pathname
 
 switch (path) {
     case "/":
+      break;
     case "/login/index.html":
       setLoginFormListener();
       setLogoutListener();
