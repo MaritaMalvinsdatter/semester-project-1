@@ -65,7 +65,7 @@ const path = location.pathname
       setRegisterFormListener();
       setLogoutListener();
       break;
-    case "/listingItem/index.html":
+    case "/listingItem/":
       getOneListing();
       setLogoutListener();
       setEditListingListener();
