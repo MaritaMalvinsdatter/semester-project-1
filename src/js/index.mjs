@@ -83,6 +83,8 @@ const path = location.pathname
       break;
   }
 
+  console.log(path)
+
 // switch (path) {
 //     case "/":
 //     case "/index.html":
