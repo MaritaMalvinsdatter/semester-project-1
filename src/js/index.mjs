@@ -16,6 +16,7 @@ import { setLogoutListener } from "./login_register/logout.mjs";
 const path = location.pathname
 
 switch (path) {
+    case "/":
     case "/login/index.html":
       setLoginFormListener();
       setLogoutListener();
