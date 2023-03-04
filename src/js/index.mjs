@@ -10,6 +10,7 @@ import * as paths from "./api/constants.mjs";
 import { setRemoveListingListener } from "./listings/deleteListing.mjs";
 import { setEditListingListener } from "./listings/editListing.mjs"
 import { setLogoutListener } from "./login_register/logout.mjs";
+import { updateNavbar } from "./profile/header.mjs"
 
 const path = location.pathname
   switch (path) {
@@ -19,14 +20,17 @@ const path = location.pathname
       setNewListingListener();
       setLogoutListener();
       viewMoreButton();
+      updateNavbar();
       break;
     case "/login/index.html":
       setLoginFormListener();
       setLogoutListener();
+      updateNavbar();
       break;
     case "/register/index.html":
       setRegisterFormListener();
       setLogoutListener();
+      updateNavbar();
       break;
       case "/listingitem/":
       case "/listingitem/index.html":
@@ -35,6 +39,7 @@ const path = location.pathname
       setEditListingListener();
       setRemoveListingListener();
       setNewListingListener();
+      updateNavbar();
       break;
     case "/profile/index.html":
       setProfilePage();
@@ -42,6 +47,7 @@ const path = location.pathname
       getOwnListingings()
       setLogoutListener();
       setNewListingListener();
+      updateNavbar();
       break;
     default:
       setLogoutListener();
