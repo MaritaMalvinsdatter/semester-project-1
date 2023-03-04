@@ -26,13 +26,18 @@
 
 .login-btn,
 .register-btn,
-.editBtn,
 .bidBtn,
 .search-button,
 .avatar-btn,
 .viewMore {
     background-color: #05476A;
     border: none;
+    color: #FFF6CB;
+}
+
+.editBtn {
+    border: solid #05476A;
+    background-color: #05476A;
     color: #FFF6CB;
 }
 

@@ -16,7 +16,7 @@ function ownListTemplate(listData) {
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
 
   const titleLink = document.createElement("a");
-  titleLink.href = `/listingItem/index.html?id=${listData.id}`;
+  titleLink.href = `/listingItem/?id=${listData.id}`;
   titleLink.classList.add("text-decoration-none");
   list.append(titleLink);
 

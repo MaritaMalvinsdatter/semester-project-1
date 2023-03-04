@@ -270,8 +270,10 @@ export function listSpecificTemplate(listData) {
   
   // Edit/delete button if it's users listing
   if (profileInfo.name === listData.seller.name) {
+    const btnDiv = document.createElement("div");
+    btnDiv.classList.add("mt-3")
     const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("btn", "deleteBtn");
+    deleteBtn.classList.add("btn", "deleteBtn", "me-2");
     deleteBtn.innerText = "Delete Listing";
     deleteBtn.addEventListener("click", async () => {
       await removeListing(listData.id);
@@ -280,11 +282,15 @@ export function listSpecificTemplate(listData) {
     list.append(deleteBtn);
 
     const editBtn = document.createElement("button");
-    editBtn.classList.add("btn", "editBtn", "mt-2", "nav-link");
+    editBtn.classList.add("btn", "editBtn");
     editBtn.setAttribute("data-bs-toggle", "modal")
     editBtn.setAttribute("data-bs-target", "#editListingModal")
     editBtn.setAttribute("id", "myInput")
-    list.append(editBtn);
+    editBtn.innerText = "Edit Listing";
+
+    btnDiv.appendChild(deleteBtn);
+    btnDiv.appendChild(editBtn)
+    list.append(btnDiv);
   }
   
   // Bidding form/button if on others listings
