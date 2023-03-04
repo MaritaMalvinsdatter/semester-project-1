@@ -42,20 +42,20 @@ CSS processors:
 - SASS/SCSS
 - PostCSS
 
-CSS frameworks
+CSS frameworks:
 - Bootstrap (version >5.0.1)
 - Tailwind (version >3.0.0)
 - MUI (version >5.11.8)
 
-Hosting services
+Hosting services:
 - GitHub Pages
 - Netlify
 
-Design applications
+Design applications:
 - Adobe XD
 - Figma
 - Sketch
 
-Planning applications
+Planning applications:
 - Trello
 - GitHub Projects
