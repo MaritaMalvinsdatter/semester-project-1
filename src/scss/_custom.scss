@@ -1,14 +1,16 @@
+@import "variables.scss";
+
 // HEADER
 
-.navbar-custom {
-    background-color: #05476A;
+.navbar-custom,
+footer {
+    background-color: $drkblue;
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text,
 .navbar-custom .nav-link,
-.fa-bars,
-.btn {
+.fa-bars {
     color: #FFF6CB;
 }
 
@@ -18,8 +20,7 @@
 
 .navbar-toggler,
 .navbar-toggler:focus,
-.navbar-toggler:active,
-.btn {
+.navbar-toggler:active {
     border: #FFF6CB solid;
     outline: none;
 }
@@ -30,15 +31,20 @@
 .search-button,
 .avatar-btn,
 .viewMore {
-    background-color: #05476A;
+    background-color: $drkblue;
     border: none;
     color: #FFF6CB;
 }
 
 .editBtn {
-    border: solid #05476A;
-    background-color: #05476A;
+    border: solid $drkblue;
+    background-color: $drkblue;
     color: #FFF6CB;
+}
+
+button a {
+    color: #FFF6CB;
+    text-decoration: none;
 }
 
 .login-btn:hover,
@@ -47,20 +53,12 @@
 .editBtn:hover,
 .bidBtn:hover,
 .search-button:hover,
-.avatar-btn:hover {
-    border: #05476A solid;
-    color: #05476A;
+.avatar-btn:hover,
+button:hover {
+    background-color: #FFF;
+    border: $drkblue solid;
+    color: $drkblue;
 }
-
-button a {
-    color: #FFF6CB;
-    text-decoration: none;
-}
-
-// h1 {
-//     font-size: 30px;
-// }
-
 
 // MAIN
 
@@ -72,8 +70,9 @@ main {
     margin: 0px 50px;
 }
 
-@media (max-width: 767px) {
-    .rounded-top {
-      flex-direction: column;
-    }
-  }
+
+// FOOTER
+
+footer h3, footer p {
+    color: #fff;
+}
