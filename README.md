@@ -17,7 +17,7 @@ The client has specified the following requirements in the form of User Stories:
 - A registered user may view Bids made on a Listing
 - An unregistered user may search through Listings
 
-##### Technical restrictions
+#### Technical restrictions:
 The company CTO has set the following technical restrictions:
 
 - Must use an approved CSS Framework
@@ -25,7 +25,7 @@ The company CTO has set the following technical restrictions:
 - Must use an approved Design Application
 - Must use an approved Planning Application
 
-##### Required links4
+#### Required links:
 The Product Owner has requested links to the following:
 
 - A Gantt chart for project timing
@@ -35,7 +35,7 @@ The Product Owner has requested links to the following:
 - A repository link
 - A hosted application demo link
 
-##### Approved resources
+#### Approved resources:
 This list covers libraries and services that have been vetted by the company and approved for use.
 
 CSS processors:
