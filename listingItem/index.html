@@ -25,7 +25,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">New Listing</a>
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#listingModal" id="myInput">New
+                                Listing</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Profile</a>
@@ -50,18 +51,16 @@
         </nav>
     </header>
     <main>
-        <div class="mt-5 d-flex justify-content-center" id="listing-specific"></div>
-        <!--Edit Listing Modal -->
-        <div class="modal fade" id="editListingModal" tabindex="-1" aria-labelledby="editListingModalLabel"
-            aria-hidden="true">
+        <!-- New Listing Modal -->
+        <div class="modal fade" id="listingModal" tabindex="-1" aria-labelledby="listingModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center">Edit Listing:</h1>
+                        <h1 class="modal-title fs-5 text-center">New Listing:</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="edit-listing">
+                        <form id="create-new-listing">
                             <div class="form-group row mx-3">
                                 <label for="title" class="col-form-label">Title: *</label>
                                 <div>
@@ -103,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="card-footer my-3 mx-3">
-                                <button type="submit" class="btn btn-primary btn-sm">Update Listing</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Create New Listing</button>
                             </div>
                         </form>
                     </div>
@@ -113,6 +112,8 @@
             </div>
         </div>
         <!-- Modal Ends -->
+        <div class="mt-5 d-flex justify-content-center" id="listing-specific"></div>
+
     </main>
     <script src="/src/js/index.mjs" defer type="module"></script>
     <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
