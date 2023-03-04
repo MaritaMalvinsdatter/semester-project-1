@@ -34,12 +34,14 @@ const path = location.pathname
       setLogoutListener();
       setEditListingListener();
       setRemoveListingListener();
+      setNewListingListener();
       break;
     case "/profile/index.html":
       setProfilePage();
       updateAvatar();
       getOwnListingings()
       setLogoutListener();
+      setNewListingListener();
       break;
     default:
       setLogoutListener();
