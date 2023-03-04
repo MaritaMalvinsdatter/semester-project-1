@@ -13,7 +13,8 @@ let listings = [];
 
 function ownListTemplate(listData) {
   const list = document.createElement("div");
-  list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
+  list.classList.add("col-xl-3", "col-lg-4", "col-md-6", 
+  "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
 
   const titleLink = document.createElement("a");
   titleLink.href = `/listingItem/?id=${listData.id}`;
@@ -26,7 +27,7 @@ function ownListTemplate(listData) {
   titleLink.append(title);
 
   let bidTotal = listData._count.bids
-  const bid = document.createElement("h4");
+  const bid = document.createElement("p");
   bid.classList.add("text-center");
   bid.innerHTML = `Total Bids: ${bidTotal}`;
   list.append(bid);
@@ -45,8 +46,8 @@ function ownListTemplate(listData) {
   imgContainer.append(img);
 
   const editBtn = document.createElement("button");
-  editBtn.classList.add("mb-2", "editBtn")
-  editBtn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">Edit Listing</a>`;
+  editBtn.classList.add("mb-2", "editBtn", "rounded")
+  editBtn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">View</a>`;
   list.append(editBtn);
 
   return list;
