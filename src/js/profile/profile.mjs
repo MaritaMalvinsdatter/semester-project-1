@@ -5,7 +5,6 @@ import { API_AUCTION_PROFILE } from "../api/constants.mjs";
 
 
 // Fetch user info and displays on profile page
-// Fetch user info and displays on profile page
 export function setProfilePage() {
   const profile = load("profile");
   const nameElem = document.querySelector("#profile-name");
@@ -15,7 +14,7 @@ export function setProfilePage() {
 
   nameElem.textContent = profile.name;
   emailElem.textContent = profile.email;
-  creditElem.textContent = "Credit: " + profile.credits;
+  creditElem.textContent = "Credit: " +  "$" + profile.credits;
 
   if (profile.avatar) {
     avatarElem.src = profile.avatar;

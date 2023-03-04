@@ -342,47 +342,50 @@ export function listSpecificTemplate(listData) {
     form.append(error);
     list.append(form);
 
-    const endTime = new Date(listData.endsAt).getTime();
-    const countdownElem = document.createElement("div");
-    list.append(countdownElem);
+  }
+  const endTime = new Date(listData.endsAt).getTime();
+  const countdownElem = document.createElement("div");
+  countdownElem.classList.add("mt-2");
+  list.append(countdownElem);
 
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = endTime - now;
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const distance = endTime - now;
 
-      if (distance < 0) {
-        clearInterval(intervalId);
-        countdownElem.innerHTML = "Auction has ended.";
-      } else {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        countdownElem.innerHTML = `Auction ends in: ${days}d & ${hours}h`;
-      }
-    };
+    if (distance < 0) {
+      clearInterval(intervalId);
+      countdownElem.innerHTML = "Auction has ended.";
+    } else {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      countdownElem.innerHTML = `Auction ends in: ${days}d & ${hours}h`;
+    }
+  };
 
   const intervalId = setInterval(updateCountdown, 1000);
 
-    if (listData.tags && Array.isArray(listData.tags)) {
-      const tagsDiv = document.createElement("div");
-      tagsDiv.classList.add("tags-container", "my-4");
-      list.append(tagsDiv);
-      
-      listData.tags.forEach((tag, index) => {
-        const tagSpan = document.createElement("span");
-        tagSpan.innerText = tag;
-        tagSpan.classList.add(`tag-${index}`, "border", "me-1", "p-1", "shadow-sm");
-        tagsDiv.append(tagSpan);
-      });
-    }
+  if (listData.tags && Array.isArray(listData.tags)) {
+    const tagsDiv = document.createElement("div");
+    tagsDiv.classList.add("tags-container", "my-4");
+    list.append(tagsDiv);
+    
+    listData.tags.forEach((tag, index) => {
+      const tagSpan = document.createElement("span");
+      tagSpan.innerText = tag;
+      tagSpan.classList.add(`tag-${index}`, "border", "me-1", "p-1", "shadow-sm");
+      tagsDiv.append(tagSpan);
+    });
+  }
     console.log(listData);
 
-    const contact = document.createElement("div");
-    contact.classList.add("mt-4")
-    contact.innerHTML = `<p class="fst-italic">For questions about item(s), please contact seller at: ${listData.seller.email}</p>`;
-    list.append(contact);
+    if (profileInfo.name !== listData.seller.name) {
+      const contact = document.createElement("div");
+      contact.classList.add("mt-4")
+      contact.innerHTML = `<p class="fst-italic">For questions about item(s), please contact seller at: ${listData.seller.email}</p>`;
+      list.append(contact);
+    }
 
-  }
-  return list;
+    return list;
 }
 
 

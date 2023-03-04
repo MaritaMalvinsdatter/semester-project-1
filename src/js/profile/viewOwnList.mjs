@@ -17,7 +17,7 @@ function ownListTemplate(listData) {
   "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
 
   const titleLink = document.createElement("a");
-  titleLink.href = `/listingItem/?id=${listData.id}`;
+  titleLink.href = `/listingitem/?id=${listData.id}`;
   titleLink.classList.add("text-decoration-none");
   list.append(titleLink);
 
@@ -47,7 +47,7 @@ function ownListTemplate(listData) {
 
   const editBtn = document.createElement("button");
   editBtn.classList.add("mb-2", "editBtn", "rounded")
-  editBtn.innerHTML =`<a href="/listingItem/index.html?id=${listData.id}">View</a>`;
+  editBtn.innerHTML =`<a href="/listingitem/?id=${listData.id}">View</a>`;
   list.append(editBtn);
 
   return list;

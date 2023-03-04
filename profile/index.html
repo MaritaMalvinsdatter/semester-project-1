@@ -56,36 +56,40 @@
     <main>
         <section class="pb-4">
             <div>
-                <section class="w-100 px-4 py-5 gradient-custom-2" style="border-radius: .5rem .5rem 0 0;">
+                <section class="w-100 px-4 py-5 gradient-custom-2 rounded">
                     <div class="row d-flex justify-content-center">
                         <div class="col col-lg-9 col-xl-8">
-                            <div class="card mx-5">
-                                <div class="rounded-top text-white d-flex flex-row"
-                                    style="background-image: url(/src/img/grid-g5889ed991_1280.jpg); height:200px;">
-                                    <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                                        <img id="profile-avatar" src="" alt="Profile Avatar"
-                                            class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                            <div class="card mx-5 shadow-sm"
+                                style="background-image: url(/src/img/grid-g5889ed991_1280.jpg);">
+                                <div class="rounded-top text-white d-flex flex-column flex-md-row align-items-center">
+                                    <div class="ms-md-4 mt-md-5 d-flex flex-column" style="width: 150px;">
+                                        <img id="profile-avatar"
+                                            src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg"
+                                            alt="Profile Avatar" class="img-fluid img-thumbnail mt-4 mb-2"
+                                            style="width: 150px; z-index: 1">
                                         <button id="edit-avatar-btn" class="btn avatar-btn" type="button"
                                             style="z-index: 1;">Edit Avatar</button>
                                         <input id="avatar-input" type="url" name="input-avatar" class="form-control"
-                                            placeholder="Insert image URL here (optional)" hidden>
+                                            placeholder="Insert image URL here (optional)" hidden="">
                                         <button id="update-avatar-btn" class="btn avatar-btn" type="button"
-                                            style="z-index: 1;" hidden>Update Avatar</button>
+                                            style="z-index: 1;" hidden="">Update Avatar</button>
                                         <div id="error-alert" class="alert text-center"></div>
                                     </div>
-                                </div>
-                                <div class="ms-3 text-dark" style="margin-top: 130px;">
-                                    <h5 id="profile-name"></h5>
-                                    <p id="profile-email"></p>
-                                    <p id="profile-credit" class="font-italic mb-1">Credit:</p>
+                                    <div class="ms-md-3 text-dark d-flex flex-column justify-content-center"
+                                        style="flex-grow: 1;">
+                                        <h5 id="profile-name">Auction_Test_User</h5>
+                                        <p id="profile-email" class="mb-1">auction_testuser@stud.noroff.no</p>
+                                        <p id="profile-credit">Credit: $870</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="listings-feed" class="row justify-content-around"></div>
                         </div>
                     </div>
                 </section>
             </div>
         </section>
+        <h2 class="text-center mb-3">My Listings:</h2>
+        <div id="listings-feed" class="row justify-content-around"></div>
     </main>
     <script src="/src/js/index.mjs" defer type="module"></script>
     <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
