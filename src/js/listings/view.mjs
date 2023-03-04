@@ -9,11 +9,12 @@ import { viewMore } from "./getLists.mjs";
 
 export function listTemplate(listData) {
   const list = document.createElement("div");
-  list.classList.add("col-xl-3", "col-lg-4", "col-md-6", "border", "border-primary", "m-3");
+  list.classList.add("col-xl-3", "col-lg-4", "col-md-6", 
+  "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
 
   const titleLink = document.createElement("a");
   titleLink.href = `/listingitem/?id=${listData.id}`;
-  titleLink.classList.add("text-decoration-none");
+  titleLink.classList.add("text-decoration-none", "p-2");
   list.append(titleLink);
 
   const title = document.createElement("h2");
@@ -60,11 +61,6 @@ export function listTemplate(listData) {
       carouselPrev.setAttribute("data-bs-slide", "prev");
       carouselContainer.append(carouselPrev);
   
-      // const carouselPrevIcon = document.createElement("span");
-      // carouselPrevIcon.classList.add("carousel-control-prev-icon");
-      // carouselPrevIcon.setAttribute("aria-hidden", "true");
-      // carouselPrev.append(carouselPrevIcon);
-  
       const carouselPrevText = document.createElement("i");
       carouselPrevText.classList.add("fa-solid", "fa-chevron-left");
       carouselPrevText.style.color = "black";
@@ -84,7 +80,7 @@ export function listTemplate(listData) {
       carouselNextText.style.fontSize = "30px"
       carouselNext.append(carouselNextText);
   
-      // Add event listeners for carousel controls
+      // Carousel controls
       carouselPrev.addEventListener("click", () => {
         const carousel = new bootstrap.Carousel(carouselContainer);
         carousel.prev();
@@ -111,12 +107,14 @@ export function listTemplate(listData) {
     }
   }
 
+  // Number of Bids
   const bidCount = listData.bids.length;
   const bid = document.createElement("h4");
   bid.classList.add("text-center");
   bid.innerHTML = `Total bids: ${bidCount}`;
   list.append(bid);
 
+  // Seller Info
   const seller = document.createElement("p");
   seller.classList.add("text-center")
   seller.innerHTML = `seller: ${listData.seller.name} <br>
@@ -125,25 +123,32 @@ export function listTemplate(listData) {
 
   const profileInfo = JSON.parse(window.localStorage.getItem('profile'));
 
+  // Buttons: Bid, Edit and Login
   if (isLoggedIn()) {
+      const btnDiv = document.createElement("div");
+      btnDiv.classList.add("d-flex", "justify-content-center");
       const btn = document.createElement("button");
-      btn.classList.add("mb-2", "bidBtn")
-      btn.innerHTML =`<a href="/listingitem/?id=${listData.id}">Place Bid</a>`;
-      list.append(btn);
+      btn.classList.add("my-4", "p-2", "bidBtn", "rounded");
+      btn.innerHTML =`<a href="/listingitem/?id=${listData.id}">Place Bid</a>`;;
+      btnDiv.appendChild(btn);
+      list.append(btnDiv);
 
       if (profileInfo.name === listData.seller.name) {
           btn.remove();
+          const btnDiv = document.createElement("div");
+          btnDiv.classList.add("d-flex", "justify-content-center");
           const editBtn = document.createElement("button");
-          editBtn.classList.add("mb-2", "editBtn")
+          editBtn.classList.add("my-4", "p-2", "editBtn", "rounded")
           editBtn.innerHTML =`<a href="/listingitem/?id=${listData.id}">Edit Listing</a>`;
-          list.append(editBtn);
+          btnDiv.appendChild(editBtn);
+          list.append(btnDiv);
       } 
   } else {
       // User is not logged in, hide the buttons
       const btns = list.querySelectorAll("button");
       btns.forEach(btn => btn.style.display = "none");
       const messageBtn = document.createElement("button");
-      messageBtn.classList.add("mb-2", "bidBtn");
+      messageBtn.classList.add("mb-2", "bidBtn", "rounded");
       messageBtn.innerHTML = `<a href="/login/index.html">Login to place bid and view details</a>`;
       list.append(messageBtn);
   }
@@ -151,78 +156,119 @@ export function listTemplate(listData) {
   return list;
 }
 
+
 // AUCTION LISTING SPECIFICS 
 
 export function listSpecificTemplate(listData) {
   const list = document.createElement("div");
   list.classList.add(
       "mainlist",
-      "sm-md-w-100",
-      "lg-w-50",
-      "container-fluid",
-      "d-flex",
-      "flex-column",
-      "border",
-      "border-primary"
+      "col-sm-2",
+      "col-md-6",
+      "d-flex", "flex-column", "border", "mx-3", "shadow-sm", "p-3", "bg-body", "rounded"
   );
-  list.innerHTML = `<h2 class="text-center mt-5">${listData.title}</h2> <br> <p>${listData.description}</p>`;
+  list.innerHTML = `<h2 class="text-center m-3">${listData.title}</h2>`;
 
-  if (listData.media) {
-    if (Array.isArray(listData.media)) {
-      const imgContainer = document.createElement("div");
-      imgContainer.classList.add("d-flex", "flex-column", "justify-content-center", "align-items-center");
-      for (const imageUrl of listData.media) {
+  if (listData.media && Array.isArray(listData.media)) {
+    if (listData.media.length > 1) {
+      // create image carousel
+      const carouselContainer = document.createElement("div");
+      carouselContainer.classList.add("carousel", "slide", "d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
+      carouselContainer.setAttribute("data-bs-ride", "carousel");
+      carouselContainer.id = `listing-${listData.id}-carousel`; // Add ID for targeting in event listeners
+      list.append(carouselContainer);
+  
+      const carouselInner = document.createElement("div");
+      carouselInner.classList.add("carousel-inner", "w-50");
+      // carouselInner.style.width = "53%";
+      carouselContainer.append(carouselInner);
+  
+      listData.media.forEach((url, index) => {
+        const carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+        if (index === 0) {
+          carouselItem.classList.add("active");
+        }
+        carouselInner.append(carouselItem);
+  
         const img = document.createElement("img");
-        img.classList.add("img-fluid", "m-2");
-        img.style.maxWidth = "50%";
-        img.src = imageUrl;
+        img.classList.add("img-fluid", "mr-3", "mb-3");
+        img.style.width = "auto";
+        img.style.height = "200px";
+        img.style.objectFit = "cover";
+        img.src = url;
         img.alt = `Image from ${listData.title}`;
-        imgContainer.append(img);
-      }
-      list.append(imgContainer);
+        carouselItem.append(img);
+      });
+  
+      const carouselPrev = document.createElement("button");
+      carouselPrev.classList.add("carousel-control-prev");
+      carouselPrev.setAttribute("type", "button");
+      carouselPrev.setAttribute("data-bs-target", `#listing-${listData.id}-carousel`);
+      carouselPrev.setAttribute("data-bs-slide", "prev");
+      carouselContainer.append(carouselPrev);
+  
+      const carouselPrevText = document.createElement("i");
+      carouselPrevText.classList.add("fa-solid", "fa-chevron-left");
+      carouselPrevText.style.color = "black";
+      carouselPrevText.style.fontSize = "30px"
+      carouselPrev.append(carouselPrevText);
+  
+      const carouselNext = document.createElement("button");
+      carouselNext.classList.add("carousel-control-next");
+      carouselNext.setAttribute("type", "button");
+      carouselNext.setAttribute("data-bs-target", `#listing-${listData.id}-carousel`);
+      carouselNext.setAttribute("data-bs-slide", "next");
+      carouselContainer.append(carouselNext);
+  
+      const carouselNextText = document.createElement("i");
+      carouselNextText.classList.add("fa-solid", "fa-chevron-right");
+      carouselNextText.style.color = "black";
+      carouselNextText.style.fontSize = "30px"
+      carouselNext.append(carouselNextText);
+  
+      // Carousel controls
+      carouselPrev.addEventListener("click", () => {
+        const carousel = new bootstrap.Carousel(carouselContainer);
+        carousel.prev();
+      });
+  
+      carouselNext.addEventListener("click", () => {
+        const carousel = new bootstrap.Carousel(carouselContainer);
+        carousel.next();
+      });
     } else {
+      // create image container
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
+      list.append(imgContainer);
+
       const img = document.createElement("img");
-      img.classList.add("img-fluid");
-      img.src = listData.media;
+      img.classList.add("img-fluid", "mr-3", "mb-3");
+      img.style.width = "200px";
+      img.style.height = "200px";
+      img.style.objectFit = "cover";
+      img.src = listData.media[0];
       img.alt = `Image from ${listData.title}`;
-      list.append(img);
+      imgContainer.append(img);
     }
   }
 
-const endTime = new Date(listData.endsAt).getTime();
-const countdownElem = document.createElement("div");
-list.append(countdownElem);
+  const description = document.createElement("div");
+  description.innerHTML = `<p>${listData.description}</p>`;
+  list.append(description);
 
-const updateCountdown = () => {
-  const now = new Date().getTime();
-  const distance = endTime - now;
-
-  if (distance < 0) {
-    clearInterval(intervalId);
-    countdownElem.innerHTML = "Auction has ended.";
-  } else {
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    countdownElem.innerHTML = `Auction ends in: ${days}d ${hours}h`;
-  }
-};
-
-const intervalId = setInterval(updateCountdown, 1000);
-
-  if (listData.tags) {
-      const tags = document.createElement("label");
-      tags.innerText = `Tags: ${listData.tags}`;
-      list.append(tags);
-  }
+  // BIDS
 
   let bidTotal = listData.bids.reduce((total, bid) => total + bid.amount, 0);
-  const bid = document.createElement("h4");
-  bid.classList.add("text-center");
-  bid.innerHTML = `Highest Bids Amount $: ${bidTotal}`;
+  const bid = document.createElement("h6");
+  bid.classList.add("mt-3");
+  bid.innerHTML = `Total Bid Amount $: ${bidTotal}`;
   list.append(bid);
 
   const profileInfo = JSON.parse(window.localStorage.getItem("profile"));
-
+  
+  // Edit/delete button if it's users listing
   if (profileInfo.name === listData.seller.name) {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("btn", "deleteBtn");
@@ -238,24 +284,22 @@ const intervalId = setInterval(updateCountdown, 1000);
     editBtn.setAttribute("data-bs-toggle", "modal")
     editBtn.setAttribute("data-bs-target", "#editListingModal")
     editBtn.setAttribute("id", "myInput")
-    editBtn.innerText = "Edit Listing";
-    // editBtn.addEventListener("click", async () => {
-    // await setEditListingListener(); // call the function to open the modal
-    // const modal = document.querySelector("#editListingModal");
-    // modal.style.display = "block"; // show the modal
-    // });
     list.append(editBtn);
   }
   
-
+  // Bidding form/button if on others listings
   if (profileInfo.name !== listData.seller.name) {
     const form = document.createElement("form");
     form.innerHTML = `
-      <div class="form-group">
-        <label for="bidAmount">Bid Amount:</label>
-        <input type="number" class="form-control" id="bidAmount" required>
+      <div class="form-group d-flex">
+        <label for="bidAmount"></label>
+          <div class="input-group w-50">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control" placeholder="your bid" id="bidAmount" required>
+          </div>
+          <button type="submit" class="btn bidBtn ms-1">Place Bid</button>
       </div>
-      <button type="submit" class="btn bidBtn">Place Bid</button>
+      
     `;
   
     const error = document.createElement("p");
@@ -278,7 +322,7 @@ const intervalId = setInterval(updateCountdown, 1000);
           profileInfo.credits -= bidAmount;
           window.localStorage.setItem("profile", JSON.stringify(profileInfo));
           bidTotal = bidAmount;
-          bid.innerHTML = `Bids Amount $: ${bidTotal}`;
+          bid.innerHTML = `Bid Amount $: ${bidTotal}`;
           form.querySelector("#bidAmount").value = "";
           error.innerText = "";
         }
@@ -291,7 +335,46 @@ const intervalId = setInterval(updateCountdown, 1000);
 
     form.append(error);
     list.append(form);
+
+    const endTime = new Date(listData.endsAt).getTime();
+    const countdownElem = document.createElement("div");
+    list.append(countdownElem);
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance < 0) {
+        clearInterval(intervalId);
+        countdownElem.innerHTML = "Auction has ended.";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        countdownElem.innerHTML = `Auction ends in: ${days}d & ${hours}h`;
+      }
+    };
+
+  const intervalId = setInterval(updateCountdown, 1000);
+
+    if (listData.tags && Array.isArray(listData.tags)) {
+      const tagsDiv = document.createElement("div");
+      tagsDiv.classList.add("tags-container", "my-4");
+      list.append(tagsDiv);
+      
+      listData.tags.forEach((tag, index) => {
+        const tagSpan = document.createElement("span");
+        tagSpan.innerText = tag;
+        tagSpan.classList.add(`tag-${index}`, "border", "me-1", "p-1", "shadow-sm");
+        tagsDiv.append(tagSpan);
+      });
+    }
     console.log(listData);
+
+    const contact = document.createElement("div");
+    contact.classList.add("mt-4")
+    contact.innerHTML = `<p class="fst-italic">For questions about item(s), please contact seller at: ${listData.seller.email}</p>`;
+    list.append(contact);
+
   }
   return list;
 }
