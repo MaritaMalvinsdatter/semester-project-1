@@ -16,3 +16,46 @@ The client has specified the following requirements in the form of User Stories:
 - A registered user may add a Bid to another user’s Listing
 - A registered user may view Bids made on a Listing
 - An unregistered user may search through Listings
+
+##### Technical restrictions
+The company CTO has set the following technical restrictions:
+
+- Must use an approved CSS Framework
+- Must be hosted on an approved Static Host
+- Must use an approved Design Application
+- Must use an approved Planning Application
+
+##### Required links4
+The Product Owner has requested links to the following:
+
+- A Gantt chart for project timing
+- A design prototype
+- A style guide
+- A kanban project board
+- A repository link
+- A hosted application demo link
+
+##### Approved resources
+This list covers libraries and services that have been vetted by the company and approved for use.
+
+CSS processors:
+- SASS/SCSS
+- PostCSS
+
+CSS frameworks
+- Bootstrap (version >5.0.1)
+- Tailwind (version >3.0.0)
+- MUI (version >5.11.8)
+
+Hosting services
+- GitHub Pages
+- Netlify
+
+Design applications
+- Adobe XD
+- Figma
+- Sketch
+
+Planning applications
+- Trello
+- GitHub Projects
