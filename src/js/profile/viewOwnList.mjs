@@ -45,10 +45,13 @@ function ownListTemplate(listData) {
   img.alt = `Image from ${listData.title}`;
   imgContainer.append(img);
 
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("mb-2", "editBtn", "rounded")
-  editBtn.innerHTML =`<a href="/listingitem/?id=${listData.id}">View</a>`;
-  list.append(editBtn);
+  const btnDiv = document.createElement("div");
+  btnDiv.classList.add("d-flex", "justify-content-center");
+  const btn = document.createElement("button");
+  btn.classList.add("my-4", "p-2", "viwBtn", "rounded");
+  btn.innerHTML =`<a href="/listingitem/?id=${listData.id}">View More</a>`;;
+  btnDiv.appendChild(btn);
+  list.append(btnDiv);
 
   return list;
 }
