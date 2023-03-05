@@ -32,14 +32,13 @@ footer {
 .bidBtn,
 .search-button,
 .avatar-btn,
-button a {
+.viwBtn {
     background-color: $drkblue;
     border: none;
     color: #FFF6CB;
     text-decoration: none;
 }
 
-.viwBtn,
 .editBtn {
     background-color: #228B22;
     border: none;
@@ -67,9 +66,11 @@ button:hover {
     box-shadow: 10px 10px;
 }
 
-button a:hover {
-    color:#FFF6CB
+button a {
+    background-color: transparent;
+    text-decoration: none;
 }
+
 
 // MAIN
 
