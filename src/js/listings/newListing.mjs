@@ -3,6 +3,7 @@ import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { API_SELLER_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 
+// Creates a new listing
 async function createNewListing(listingData) {
     const createListingURL = API_SELLER_URL;
 
@@ -57,11 +58,8 @@ export function setNewListingListener() {
 
       listing.endsAt = date.toISOString();
 
-      console.log("listing", listing);
-
       try {
         const response = await createNewListing(listing);
-        console.log("response", response);
         setTimeout(() => {
           window.location.href = "/index.html";
         }, 1000); 
