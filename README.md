@@ -1,5 +1,8 @@
 # semester-project-2 - Auction House
 
+## PAGE: 
+https://semester-project-auction-house.netlify.app/
+
 #### BRIEF:
 An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction.
 When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items. Non-registered users can search through the listings, but only registered users can make bids on listings.
@@ -59,3 +62,27 @@ Design applications:
 Planning applications:
 - Trello
 - GitHub Projects
+
+## Installation:
+
+First clone the repo: 
+
+```bash
+git clone git@github.com:MaritaMalvinsdatter/semester-project-2.git
+```
+
+Then run the following commands in the terminal: 
+
+```bash
+npm I
+npm run build
+```
+
+For SCSS/SASS:
+
+```bash
+npm run start
+```
+
+#### BADGES
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1bbdba6a-d29d-46b5-84f7-cde048ee2383/deploy-status)](https://app.netlify.com/sites/semester-project-auction-house/deploys)
