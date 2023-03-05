@@ -37,7 +37,12 @@ button,
 }
 
 button:hover {
-    box-shadow: 10px 10px;
+    box-shadow: 10px 10px gray;
+}
+
+.login-btn:hover {
+    box-shadow: 10px 10px gray;
+    border: $drkblue 1px;
 }
 
 button a {

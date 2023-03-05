@@ -170,10 +170,7 @@ export function listTemplate(listData) {
 export function listSpecificTemplate(listData) {
   const list = document.createElement("div");
   list.classList.add(
-      "mainlist",
-      "col-sm-2",
-      "col-md-6",
-      "d-flex", "flex-column", "border", "mx-3", "shadow-sm", "p-3", "bg-body", "rounded"
+      "mainlist", "col-6", "d-flex", "flex-column", "border", "mx-3", "shadow-sm", "p-3", "bg-body", "rounded"
   );
   list.innerHTML = `<h2 class="text-center m-3">${listData.title}</h2>`;
 
