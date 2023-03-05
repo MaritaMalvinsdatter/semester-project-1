@@ -1,4 +1,4 @@
-import { API_LISTINGS_URL } from "../api/constants.mjs";
+import { API_LISTINGS_URL, DESC_ORDER, API_SELLER } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import { getListingSpecifics } from "../listings/getLists.mjs"
 
@@ -8,11 +8,11 @@ async function editListing(listingData) {
         console.error("listingID needed to edit existing listing");
     }
 
-    const updatelistingURL = `${API_LISTINGS_URL}/${listingData.id}`;
+    const updatelistingURL = `${API_LISTINGS_URL}/${listingData.id}?${DESC_ORDER}&${API_SELLER}`;
     // console.log(updatelistingURL);
 
     const response = await tokenFetch(updatelistingURL, {
-        method: "put",
+        method: "PUT",
         body: JSON.stringify(listingData)
     })
 
@@ -25,14 +25,13 @@ export async function setEditListingListener() {
     const url = new URL(location.href);
     const id = url.searchParams.get("id");
 
-    const userAlert = document.querySelector("#error-alert");
-
     if (form) {
 
         const button = form.querySelector("button");
         button.disabled = true;
 
         const listing = await getListingSpecifics(id);
+        console.log(listing)
 
         // shows orignal input
         form.title.value = listing.title;
@@ -42,9 +41,15 @@ export async function setEditListingListener() {
         form.media3.value = listing.media[2];
         console.log(listing.media)
         form.tags.value = listing.tags;
-
-        let endDate = listing.endsAt.substring(0,10);
-        form.endsAt.value = endDate;
+       
+        for (let i = 1; i <= 3; i++) {
+            const mediaUrl = listing.media[i - 1];
+            if (mediaUrl !== undefined) {
+                form[`media${i}`].value = mediaUrl;
+            } else {
+                form[`media${i}`].value = '';
+            }
+        }
 
         button.disabled = false;
     
@@ -76,7 +81,7 @@ export async function setEditListingListener() {
         }
             
             editListing(listing)
-            setTimeout(function() { window.location.assign(`/listingItem/index.html?id=${listing.id}`); }, 500); 
+            setTimeout(function() { window.location.assign(`/listingitem/?id=${listing.id}`); }, 400); 
         })
     }
 }
