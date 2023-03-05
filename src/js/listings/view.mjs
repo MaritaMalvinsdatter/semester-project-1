@@ -393,7 +393,6 @@ export function listSpecificTemplate(listData) {
       tagsDiv.append(tagSpan);
     });
   }
-    console.log(listData);
 
     if (profileInfo.name !== listData.seller.name) {
       const contact = document.createElement("div");

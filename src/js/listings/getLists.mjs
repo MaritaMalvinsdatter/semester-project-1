@@ -17,8 +17,6 @@ export async function getList() {
     const response = await tokenFetch(updateListURL)
     const list = await response.json();
     moreItems = moreItems + increments;
-    // console.log(updateListURL);
-
     return list;
 }
 
@@ -36,7 +34,6 @@ export async function viewMore() {
     moreItems = moreItems + increments;
     const container = document.querySelector("#listings-feed");
     templates.renderLists(list, container);
-    console.log(response);
 }
 
 export async function getListings() {
@@ -75,17 +72,13 @@ export async function getListingSpecifics() {
     const queryString = document.location.search;
     const params = new URLSearchParams(queryString);
     const id = params.get("id");
-    // console.log(id);
 
     if (!id) {
         console.error("listingID needed to get listing");
     }
     const getSpecificsURL = `${API_LISTINGS_URL}/${id}?${DESC_ORDER}&${API_SELLER}`;
-    console.log(getSpecificsURL);
     const response = await tokenFetch(getSpecificsURL)
     const specifics = await response.json();
-
-    // console.log(getSpecificsURL);
 
     return specifics;
 }
@@ -94,5 +87,4 @@ export async function getOneListing() {
     const specifics = await getListingSpecifics()
     const container = document.querySelector("#listing-specific");
     templates.renderSpecifics(specifics, container)
-    // console.log(specifics);
 }

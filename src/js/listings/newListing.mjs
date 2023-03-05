@@ -57,11 +57,8 @@ export function setNewListingListener() {
 
       listing.endsAt = date.toISOString();
 
-      console.log("listing", listing);
-
       try {
         const response = await createNewListing(listing);
-        console.log("response", response);
         setTimeout(() => {
           window.location.href = "/index.html";
         }, 1000); 

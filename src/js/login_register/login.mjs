@@ -29,7 +29,6 @@ export function setLoginFormListener() {
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
             const user = Object.fromEntries(new FormData(event.target).entries());
-            console.log(user);
             await login(user);
         });
     }

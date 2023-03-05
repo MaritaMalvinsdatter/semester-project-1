@@ -66,7 +66,6 @@ async function getOwnListing() {
   const updateListURL = `${API_AUCTION_PROFILE}${profile.name}${API_LISTINGS_CONST}`;
   const response = await tokenFetch(updateListURL);
   const list = await response.json();
-  console.log(list)
 
   return list;
 }

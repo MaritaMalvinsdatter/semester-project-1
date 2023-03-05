@@ -9,7 +9,6 @@ async function editListing(listingData) {
     }
 
     const updatelistingURL = `${API_LISTINGS_URL}/${listingData.id}?${DESC_ORDER}&${API_SELLER}`;
-    // console.log(updatelistingURL);
 
     const response = await tokenFetch(updatelistingURL, {
         method: "PUT",
@@ -31,7 +30,6 @@ export async function setEditListingListener() {
         button.disabled = true;
 
         const listing = await getListingSpecifics(id);
-        console.log(listing)
 
         // shows orignal input
         form.title.value = listing.title;
@@ -39,7 +37,6 @@ export async function setEditListingListener() {
         form.media1.value = listing.media[0];
         form.media2.value = listing.media[1];
         form.media3.value = listing.media[2];
-        console.log(listing.media)
         form.tags.value = listing.tags;
        
         for (let i = 1; i <= 3; i++) {
