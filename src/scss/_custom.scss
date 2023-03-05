@@ -25,36 +25,50 @@ footer {
     outline: none;
 }
 
+// button a {
+//     text-decoration: none;
+//     color: none;
+// }
+
 .login-btn,
 .register-btn,
 .bidBtn,
 .search-button,
 .avatar-btn,
-.viewMore {
+button a {
     background-color: $drkblue;
     border: none;
-    color: #FFF6CB;
-}
-
-.editBtn {
-    border: solid $drkblue;
-    background-color: $drkblue;
-    color: #FFF6CB;
-}
-
-button a {
     color: #FFF6CB;
     text-decoration: none;
 }
 
+.viwBtn,
+.editBtn {
+    background-color: #228B22;
+    border: none;
+    color: $drkblue;
+}
+
+.editBtnBorder {
+    background-color: #228B22;
+    border: #228B22 solid;
+    color: $drkblue;
+}
+
+.deleteBtn,
+.viewMore {
+    background-color: #fff;
+    border: #228B22 solid;
+    color: $drkblue;
+}
+
 .login-btn:hover,
 .register-btn:hover,
-.deleteBtn,
 .editBtn:hover,
 .bidBtn:hover,
 .search-button:hover,
 .avatar-btn:hover,
-button:hover {
+button a:hover {
     background-color: #FFF;
     border: $drkblue solid;
     color: $drkblue;
