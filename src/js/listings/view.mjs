@@ -11,7 +11,7 @@ export function listTemplate(listData) {
   const list = document.createElement("div");
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", 
   "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
-  list.style.position = "relative";
+  // list.style.position = "relative";
 
   // Title and link to specifics
   const titleLink = document.createElement("a");
@@ -95,7 +95,7 @@ export function listTemplate(listData) {
         carousel.next();
       });
     } else {
-      // create image container
+      // create image container if only one img
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
       list.append(imgContainer);
@@ -128,15 +128,9 @@ export function listTemplate(listData) {
   const profileInfo = JSON.parse(window.localStorage.getItem('profile'));
 
   // Buttons: Bid, Edit and Login
-    const btnDiv = document.createElement("div");
-    btnDiv.classList.add("d-flex", "justify-content-center");
-    btnDiv.style.position = "absolute";
-    btnDiv.style.bottom = "10px";
-    btnDiv.style.left = "50%";
-    btnDiv.style.transform = "translateX(-50%)";
-
   if (isLoggedIn()) {
     // Other users listings
+      const btnDiv = document.createElement("div");
       btnDiv.classList.add("d-flex", "justify-content-center");
       const btn = document.createElement("button");
       btn.classList.add("my-4", "p-2", "bidBtn", "rounded");
