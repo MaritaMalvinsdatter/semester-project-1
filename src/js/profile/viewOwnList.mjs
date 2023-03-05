@@ -1,15 +1,14 @@
-import { isLoggedIn } from "../api/helpers.mjs";
+
 import { API_AUCTION_PROFILE } from "../api/constants.mjs";
 import { API_LISTINGS_CONST } from "../api/constants.mjs";
 import { API_SELLER } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import { getUser } from "../api/helpers.mjs";
-// import * as templates from "../listings/view.mjs";
+
 
 let listings = [];
 
 // Get Users List of Auction Items
-
 
 function ownListTemplate(listData) {
   const list = document.createElement("div");
@@ -71,7 +70,7 @@ async function getOwnListing() {
 }
 
 export async function getOwnListingings() {
-  listings = await getOwnListing(); // assign the fetched list of items to the listings variable
+  listings = await getOwnListing(); 
   const container = document.querySelector("#listings-feed");
   renderOwnLists(listings, container);
 }

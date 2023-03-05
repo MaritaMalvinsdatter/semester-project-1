@@ -1,6 +1,4 @@
 import { API_AUCTION_URL } from "../api/constants.mjs";
-import { save } from "../api/tokenStorage.mjs";
-import { setLoginFormListener } from "../login_register/login.mjs";
 import { login } from "./login.mjs";
 
 const action = "/auth/register";

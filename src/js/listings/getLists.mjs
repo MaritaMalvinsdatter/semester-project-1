@@ -5,7 +5,6 @@ import { DESC_ORDER } from "../api/constants.mjs";
 import { API_SELLER } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import * as templates from "./view.mjs";
-// const action = "/lists";
 
 let listings = [];
 let moreItems = 0;
@@ -37,13 +36,12 @@ export async function viewMore() {
 }
 
 export async function getListings() {
-    listings = await getList(); // assign the fetched list of items to the listings variable
+    listings = await getList(); 
     const container = document.querySelector("#listings-feed");
     templates.renderLists(listings, container);
 }
 
 // Search in Listings
-
 export function searchListings() {
     const searchInput = document.querySelector("#search-input");
     const searchQuery = searchInput.value.toLowerCase();
@@ -64,9 +62,7 @@ if (searchButton) {
 }
 
 
-
-
-// gets single listing
+// Gets single listing
 export async function getListingSpecifics() {
 
     const queryString = document.location.search;

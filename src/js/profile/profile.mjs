@@ -20,7 +20,7 @@ export function setProfilePage() {
     avatarElem.src = profile.avatar;
   } else {
     avatarElem.src = "/src/img/blank-profile-picture-gca82a1260_640.png";
-    save("profile", profile); // save updated profile to local storage
+    save("profile", profile); 
   }
 }
 

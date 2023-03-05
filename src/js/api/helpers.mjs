@@ -1,5 +1,4 @@
 import { load, save, remove } from "./tokenStorage.mjs";
-import * as paths from "./constants.mjs";
 
 const userKey = "token";
 

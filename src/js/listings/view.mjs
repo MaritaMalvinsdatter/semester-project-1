@@ -11,7 +11,6 @@ export function listTemplate(listData) {
   const list = document.createElement("div");
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", 
   "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
-  // list.style.position = "relative";
 
   // Title and link to specifics
   const titleLink = document.createElement("a");
@@ -95,7 +94,7 @@ export function listTemplate(listData) {
         carousel.next();
       });
     } else {
-      // create image container if only one img
+      // Create image container if only one img
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
       list.append(imgContainer);
@@ -184,7 +183,7 @@ export function listSpecificTemplate(listData) {
       const carouselContainer = document.createElement("div");
       carouselContainer.classList.add("carousel", "slide", "d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
       carouselContainer.setAttribute("data-bs-ride", "carousel");
-      carouselContainer.id = `listing-${listData.id}-carousel`; // Add ID for targeting in event listeners
+      carouselContainer.id = `listing-${listData.id}-carousel`; 
       list.append(carouselContainer);
   
       const carouselInner = document.createElement("div");
@@ -247,7 +246,7 @@ export function listSpecificTemplate(listData) {
         carousel.next();
       });
     } else {
-      // create image container
+      // Create image container
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
       list.append(imgContainer);

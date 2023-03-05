@@ -3,6 +3,7 @@ import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { API_SELLER_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 
+// Creates a new listing
 async function createNewListing(listingData) {
     const createListingURL = API_SELLER_URL;
 
