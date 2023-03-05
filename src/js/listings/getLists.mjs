@@ -81,6 +81,7 @@ export async function getListingSpecifics() {
         console.error("listingID needed to get listing");
     }
     const getSpecificsURL = `${API_LISTINGS_URL}/${id}?${DESC_ORDER}&${API_SELLER}`;
+    console.log(getSpecificsURL);
     const response = await tokenFetch(getSpecificsURL)
     const specifics = await response.json();
 
@@ -93,5 +94,5 @@ export async function getOneListing() {
     const specifics = await getListingSpecifics()
     const container = document.querySelector("#listing-specific");
     templates.renderSpecifics(specifics, container)
-    console.log(specifics);
+    // console.log(specifics);
 }

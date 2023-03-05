@@ -15,7 +15,10 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom bg-gradient py-sm-3 pt-lg-5 pb-lg-1">
             <div class="container-fluid">
-                <a class="navbar-brand logo h1" href="/index.html">Auction House</a>
+                <div>
+                    <a class="navbar-brand logo me-auto" href="/index.html"><img src="./src/img/logo3.png" alt="logo"
+                            class="img-fluid" style="max-width: 290px;"></a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -24,24 +27,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#listingModal" id="myInput">New
+                            <a class="nav-link fs-5 pb-0" data-bs-toggle="modal" data-bs-target="#listingModal"
+                                id="myInput">New
                                 Listing</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
-                        </li> -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle fs-5 pb-0" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"
-                                        id="myInput">Log In</a></li> -->
-                                <li><a class="dropdown-item" href="/login/index.html">Log In</a></li>
-                                <li><a class="dropdown-item" id="log-out" href="#">Log Out</a></li>
-                                <li><a class="dropdown-item" href="/profile/index.html">My Profile</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Edit Profile</a></li> -->
+                                <li><a class="dropdown-item pb-0" href="/login/index.html">Log In</a></li>
+                                <li><a class="dropdown-item pb-0" id="log-out" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item pb-0" href="/profile/index.html">My Profile</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -114,8 +112,7 @@
         <!-- SEARCH -->
         <div class="mt-5 d-flex justify-content-center">
             <form class="d-flex" role="search">
-                <input id="search-input" type="search" id="form1" class="form-control"
-                    placeholder="Search for title or name of seller" />
+                <input id="search-input" type="search" id="form1" class="form-control" placeholder="Search listings" />
                 <label class="form-label" for="form1"></label>
                 <button id="search-button" class="btn search-button" type="button">Search</button>
             </form>

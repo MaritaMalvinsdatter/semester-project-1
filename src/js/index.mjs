@@ -6,8 +6,6 @@ import { viewMoreButton } from "./listings/getLists.mjs";
 import { setNewListingListener } from "./listings/newListing.mjs";
 import { setProfilePage, updateAvatar } from "./profile/profile.mjs";
 import { getOwnListingings } from "./profile/viewOwnList.mjs";
-import * as paths from "./api/constants.mjs";
-import { setRemoveListingListener } from "./listings/deleteListing.mjs";
 import { setEditListingListener } from "./listings/editListing.mjs"
 import { setLogoutListener } from "./login_register/logout.mjs";
 import { updateNavbar } from "./profile/header.mjs"
@@ -37,7 +35,6 @@ const path = location.pathname
       getOneListing();
       setLogoutListener();
       setEditListingListener();
-      setRemoveListingListener();
       setNewListingListener();
       updateNavbar();
       break;

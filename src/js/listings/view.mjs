@@ -1,27 +1,31 @@
 
-// View Full List of Auction Items
-
 import { isLoggedIn } from "../api/helpers.mjs";
 import { API_LISTINGS_URL } from "../api/constants.mjs";
 import { tokenFetch } from "../api/tokenFetch.mjs";
 import { removeListing } from "./deleteListing.mjs";
-import { viewMore } from "./getLists.mjs";
+
+
+// VIEW LIST OF ACTIVE AUCTIONS
 
 export function listTemplate(listData) {
   const list = document.createElement("div");
   list.classList.add("col-xl-3", "col-lg-4", "col-md-6", 
   "d-flex", "flex-column", "border", "m-3", "shadow-sm", "p-3", "bg-body", "rounded");
+  // list.style.position = "relative";
 
+  // Title and link to specifics
   const titleLink = document.createElement("a");
   titleLink.href = `/listingitem/?id=${listData.id}`;
   titleLink.classList.add("text-decoration-none", "p-2");
   list.append(titleLink);
 
-  const title = document.createElement("h2");
+  const title = document.createElement("h3");
   title.classList.add("text-muted", "text-center");
   title.innerText = listData.title;
   titleLink.append(title);
 
+
+// Image Container and Carousell 
   if (listData.media && Array.isArray(listData.media)) {
     if (listData.media.length > 1) {
       // create image carousel
@@ -91,7 +95,7 @@ export function listTemplate(listData) {
         carousel.next();
       });
     } else {
-      // create image container
+      // create image container if only one img
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("d-flex", "flex-wrap", "justify-content-center", "align-items-center", "mb-3");
       list.append(imgContainer);
@@ -125,6 +129,7 @@ export function listTemplate(listData) {
 
   // Buttons: Bid, Edit and Login
   if (isLoggedIn()) {
+    // Other users listings
       const btnDiv = document.createElement("div");
       btnDiv.classList.add("d-flex", "justify-content-center");
       const btn = document.createElement("button");
@@ -133,6 +138,7 @@ export function listTemplate(listData) {
       btnDiv.appendChild(btn);
       list.append(btnDiv);
 
+      // Users own listing 
       if (profileInfo.name === listData.seller.name) {
           btn.remove();
           const btnDiv = document.createElement("div");
@@ -144,13 +150,13 @@ export function listTemplate(listData) {
           list.append(btnDiv);
       } 
   } else {
-      // User is not logged in, hide the buttons
+          // If user is not logged in create button for more info
           const btnDiv = document.createElement("div");
           btnDiv.classList.add("d-flex", "justify-content-center");
           const btns = list.querySelectorAll("button");
           btns.forEach(btn => btn.style.display = "none");
           const messageBtn = document.createElement("button");
-          messageBtn.classList.add("mb-2", "p-2", "bidBtn", "rounded");
+          messageBtn.classList.add("mb-2", "p-2", "viwBtn", "rounded");
           messageBtn.innerHTML = `<a href="/login/index.html">Login for details</a>`;
           btnDiv.appendChild(messageBtn)
           list.append(btnDiv);
@@ -277,15 +283,23 @@ export function listSpecificTemplate(listData) {
     btnDiv.classList.add("mt-3")
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("btn", "deleteBtn", "me-2");
-    deleteBtn.innerText = "Delete Listing";
+    deleteBtn.innerText = "Delete";
+    list.append(deleteBtn); 
     deleteBtn.addEventListener("click", async () => {
-      await removeListing(listData.id);
-      window.location.assign(`/index.html`);
+      const confirmed = confirm("Are you sure you want to delete this listing?");
+      if (confirmed) {
+        try {
+          await removeListing(listData.id);
+          window.location.assign("../profile/index.html");
+        } catch (error) {
+          console.error(error);
+          // Handle error, e.g. display error message to user
+        }
+      }
     });
-    list.append(deleteBtn);
 
     const editBtn = document.createElement("button");
-    editBtn.classList.add("btn", "editBtn");
+    editBtn.classList.add("btn", "editBtnBorder");
     editBtn.setAttribute("data-bs-toggle", "modal")
     editBtn.setAttribute("data-bs-target", "#editListingModal")
     editBtn.setAttribute("id", "myInput")

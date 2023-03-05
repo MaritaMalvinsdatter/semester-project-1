@@ -7,9 +7,7 @@ footer {
     background-color: $drkblue;
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text,
-.navbar-custom .nav-link,
+.nav-link,
 .fa-bars {
     color: #FFF6CB;
 }
@@ -25,39 +23,52 @@ footer {
     outline: none;
 }
 
+#myInput:hover {
+    cursor: pointer;
+}
+
 .login-btn,
 .register-btn,
 .bidBtn,
 .search-button,
 .avatar-btn,
-.viewMore {
+button a {
     background-color: $drkblue;
     border: none;
-    color: #FFF6CB;
-}
-
-.editBtn {
-    border: solid $drkblue;
-    background-color: $drkblue;
-    color: #FFF6CB;
-}
-
-button a {
     color: #FFF6CB;
     text-decoration: none;
 }
 
-.login-btn:hover,
-.register-btn:hover,
-.deleteBtn,
-.editBtn:hover,
-.bidBtn:hover,
-.search-button:hover,
-.avatar-btn:hover,
-button:hover {
-    background-color: #FFF;
-    border: $drkblue solid;
+.viwBtn,
+.editBtn {
+    background-color: #228B22;
+    border: none;
     color: $drkblue;
+}
+
+.editBtn a {
+    background-color: #228B22;
+}
+
+.editBtnBorder {
+    background-color: #228B22;
+    border: #228B22 solid;
+    color: #FFF6CB;
+}
+
+.deleteBtn,
+.viewMore {
+    background-color: #fff;
+    border: #228B22 solid;
+    color: $drkblue;
+}
+
+button:hover {
+    box-shadow: 10px 10px;
+}
+
+button a:hover {
+    color:#FFF6CB
 }
 
 // MAIN
