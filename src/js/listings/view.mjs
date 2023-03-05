@@ -145,12 +145,15 @@ export function listTemplate(listData) {
       } 
   } else {
       // User is not logged in, hide the buttons
-      const btns = list.querySelectorAll("button");
-      btns.forEach(btn => btn.style.display = "none");
-      const messageBtn = document.createElement("button");
-      messageBtn.classList.add("mb-2", "bidBtn", "rounded");
-      messageBtn.innerHTML = `<a href="/login/index.html">Login to place bid and view details</a>`;
-      list.append(messageBtn);
+          const btnDiv = document.createElement("div");
+          btnDiv.classList.add("d-flex", "justify-content-center");
+          const btns = list.querySelectorAll("button");
+          btns.forEach(btn => btn.style.display = "none");
+          const messageBtn = document.createElement("button");
+          messageBtn.classList.add("mb-2", "p-2", "bidBtn", "rounded");
+          messageBtn.innerHTML = `<a href="/login/index.html">Login for details</a>`;
+          btnDiv.appendChild(messageBtn)
+          list.append(btnDiv);
   }
 
   return list;
