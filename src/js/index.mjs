@@ -35,7 +35,7 @@ const path = location.pathname
       getOneListing();
       setLogoutListener();
       setEditListingListener();
-      // setNewListingListener();
+      setNewListingListener();
       updateNavbar();
       break;
     case "/profile/index.html":
