@@ -84,6 +84,12 @@ For SCSS/SASS:
 npm run start
 ```
 
+To run Prettier: 
+
+```bash
+npm run format
+```
+
 #### BADGES
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1bbdba6a-d29d-46b5-84f7-cde048ee2383/deploy-status)](https://app.netlify.com/sites/semester-project-auction-house/deploys)
 [![Deploy static content to Pages](https://github.com/MaritaMalvinsdatter/social-media-client-workflow/actions/workflows/pages.yml/badge.svg)](https://github.com/MaritaMalvinsdatter/social-media-client-workflow/actions/workflows/static.yml)
