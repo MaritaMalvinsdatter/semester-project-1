@@ -1,6 +1,6 @@
 # semester-project-2 - Auction House
 
-## PAGE: 
+### PAGE: 
 https://semester-project-auction-house.netlify.app/
 
 #### BRIEF:
@@ -86,3 +86,4 @@ npm run start
 
 #### BADGES
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1bbdba6a-d29d-46b5-84f7-cde048ee2383/deploy-status)](https://app.netlify.com/sites/semester-project-auction-house/deploys)
+[![Deploy static content to Pages](https://github.com/MaritaMalvinsdatter/social-media-client-workflow/actions/workflows/pages.yml/badge.svg)](https://github.com/MaritaMalvinsdatter/social-media-client-workflow/actions/workflows/static.yml)
