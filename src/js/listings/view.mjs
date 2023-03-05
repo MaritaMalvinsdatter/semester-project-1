@@ -278,7 +278,7 @@ export function listSpecificTemplate(listData) {
     const btnDiv = document.createElement("div");
     btnDiv.classList.add("mt-3")
     const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("btn", "deleteBtn", "me-2");
+    deleteBtn.classList.add("deleteBtn", "me-2", "p-2");
     deleteBtn.innerText = "Delete";
     list.append(deleteBtn); 
     deleteBtn.addEventListener("click", async () => {
@@ -295,7 +295,7 @@ export function listSpecificTemplate(listData) {
     });
 
     const editBtn = document.createElement("button");
-    editBtn.classList.add("btn", "editBtnBorder");
+    editBtn.classList.add("editBtnGr", "p-2");
     editBtn.setAttribute("data-bs-toggle", "modal")
     editBtn.setAttribute("data-bs-target", "#editListingModal")
     editBtn.setAttribute("id", "myInput")
@@ -316,7 +316,7 @@ export function listSpecificTemplate(listData) {
             <span class="input-group-text">$</span>
             <input type="number" class="form-control" placeholder="your bid" id="bidAmount" required>
           </div>
-          <button type="submit" class="btn bidBtn ms-1">Place Bid</button>
+          <button type="submit" class="bidBtn ms-1">Place Bid</button>
       </div>
       
     `;

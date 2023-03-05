@@ -27,22 +27,23 @@ footer {
     cursor: pointer;
 }
 
-
 button,
 .btn {
     background-color: $drkblue;
-    border: none;
+    border: $drkblue;
     color: #FFF6CB;
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
 }
 
-button:hover {
-    box-shadow: 10px 10px gray;
+button:hover,
+.btn:hover {
+    transform: scale(1.1);
+    border: $drkblue;
 }
 
 .login-btn:hover {
-    box-shadow: 10px 10px gray;
-    border: $drkblue 1px;
+    transition: all 0.3s ease-in-out;
 }
 
 button a {
