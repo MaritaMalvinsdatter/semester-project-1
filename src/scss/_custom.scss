@@ -27,40 +27,6 @@ footer {
     cursor: pointer;
 }
 
-// .login-btn,
-// .register-btn,
-// .bidBtn,
-// .search-button,
-// .avatar-btn,
-// .viwBtn {
-//     background-color: $drkblue;
-//     border: none;
-//     color: #FFF6CB;
-//     text-decoration: none;
-// }
-
-// .editBtn {
-//     background-color: #228B22;
-//     border: none;
-//     color: $drkblue;
-// }
-
-// .editBtn a {
-//     background-color: #228B22;
-// }
-
-// .editBtnBorder {
-//     background-color: #228B22;
-//     border: #228B22 solid;
-//     color: #FFF6CB;
-// }
-
-// .deleteBtn,
-// .viewMore {
-//     background-color: #fff;
-//     border: #228B22 solid;
-//     color: $drkblue;
-// }
 
 button,
 .btn {
@@ -76,6 +42,10 @@ button:hover {
 
 button a {
     text-decoration: none;
+    color: #fff;
+}
+
+button a:hover {
     color: #fff;
 }
 
