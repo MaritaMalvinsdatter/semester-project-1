@@ -1,5 +1,7 @@
 # semester-project-2 - Auction House
 
+![image](https://github.com/MaritaMalvinsdatter/semester-project-2/assets/79151543/c18eab2a-296c-4468-bc9a-9958b2399924)
+
 ### PAGE: 
 https://semester-project-auction-house.netlify.app/
 
@@ -38,30 +40,23 @@ The Product Owner has requested links to the following:
 - A repository link
 - A hosted application demo link
 
-#### Approved resources:
+#### Resources Used:
 This list covers libraries and services that have been vetted by the company and approved for use.
 
 CSS processors:
 - SASS/SCSS
-- PostCSS
 
 CSS frameworks:
 - Bootstrap (version >5.0.1)
-- Tailwind (version >3.0.0)
-- MUI (version >5.11.8)
 
 Hosting services:
-- GitHub Pages
 - Netlify
 
 Design applications:
 - Adobe XD
-- Figma
-- Sketch
 
 Planning applications:
 - Trello
-- GitHub Projects
 
 ## Installation:
 
