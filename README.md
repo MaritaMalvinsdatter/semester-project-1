@@ -2,7 +2,7 @@
 
 ![image](https://github.com/MaritaMalvinsdatter/semester-project-2/assets/79151543/c18eab2a-296c-4468-bc9a-9958b2399924)
 
-### PAGE: 
+### DEMO PAGE: 
 https://semester-project-auction-house.netlify.app/
 
 #### BRIEF:
@@ -41,8 +41,6 @@ The Product Owner has requested links to the following:
 - A hosted application demo link
 
 #### Resources Used:
-This list covers libraries and services that have been vetted by the company and approved for use.
-
 CSS processors:
 - SASS/SCSS
 
